@@ -60,3 +60,7 @@ All of the other stats fields, M.I.L.K., Carrying Capacity, Confirmed Kills, Cre
 (DM) Whenever you change the current value of Bones, Cunning, or Nerves, your ACTION Maximum will update to the sum of those three stats.
 ## The Threats Sheet
 This sheet is based on the Dirtbags! threat profiles, with some modifications to aid in online play and some concessions made due to the Roll20 system.
+
+The Threats Sheet is a table of threat statistics for your monsters. The ADD button adds new monster rows to the table. The relevant stats for a monster can be filled in. Since Dirtbags! often call for multiple monsters of the same type, an easy way to manage them without typing in the same stats multiple times is to just type the full stats in for the first instance of that monster type. Then you can add additional copies by just filling in the name and referring to the stats in the intitial copy.
+
+Each monster row ends with a HP TAKEN field for keeping track of damage dealt to the monster. Since each row has its own HP TAKEN field, you can track the damage to each monster individually.
