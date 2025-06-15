@@ -247,34 +247,139 @@
         </div>
         
         <div class='sheet-threats'>
-            <div class="threat">
-                <span class="th">Name</span>
-                <span class="th">HP</span>
-                <span class="th">Attack</span>
-                <span class="th">DMG</span>
-                <span class="th">DEF</span>
-                <span class="th">SPD</span>
-                <span class="th">ER</span>
-                <span class="th">Special</span>
-                <span class="th">HP TAKEN</span>
+            <div style="padding: 5px 0px 5px 0px;font-size: 18px">
+                <span class="th">Threat Type</span>
+                <input type="text" name="attr_tname" id="tname" style="height: 24px; width: 200px"/>
             </div>
-        	<fieldset class="repeating_threatlist"> 
-                <div class="threat">
-                    <input type="text" name="attr_tname"/>
-                    <input type="number" name="attr_thp"/>
-                    <input type="text" name="attr_tattack"/>
-                    <input type="number" name="attr_tdmg"/>
-                    <input type="number" name="attr_tdef"/>
-                    <input type="number" name="attr_tspd"/>
-                    <select name="attr_ter" id="range" style="text-transform: uppercase;">
-                      <option value="close">CLOSE</option>
+            <span>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span>
+
+            <div style="padding: 4px">
+                <span style="padding: 4px 10px 4px 5px;font-size: 13px">
+                    <span class="th">HP</span>
+                    <input type="number" name="attr_thp" id="thp" style="height: 24px"/>
+                </span>
+                <span style="padding: 4px 10px 4px 5px;font-size: 13px">
+                    <span class="th">Attack</span>
+                    <input type="text" name="attr_tattack" style="height: 24px; width: 130px"/>
+                </span>
+                <span style="padding: 4px 10px 4px 5px;font-size: 13px">
+                    <span class="th">DMG</span>
+                    <input type="number" name="attr_tdmg" style="height: 24px"/>
+                </span>
+                <span style="padding: 4px 10px 4px 5px;font-size: 13px">
+                    <span class="th">DEF</span>
+                    <input type="number" name="attr_tdef" style="height: 24px"/>
+                </span>
+                <span style="padding: 4px 10px 4px 5px;font-size: 13px">
+                    <span class="th">SPD</span>
+                    <input type="number" name="attr_tspd" style="height: 24px"/>
+                </span>
+                <span style="padding: 4px 10px 4px 5px;font-size: 13px">
+                    <span class="th">ER</span>
+                    <select name="attr_ter" id="range" style="text-transform: uppercase; width: 80px; height: 24px">
+                      <option value="close" selected>CLOSE</option>
                       <option value="near">NEAR</option>
                       <option value="far">FAR</option>
                     </select>
-                    <input type="text" name="attr_tspec"/>
-                    <input type="number" name="attr_thptaken"/>
+                </span>
+            </div>
+
+            <div style="display: flex">
+                <span style="padding: 4px 10px 4px 5px;font-size: 13px">Special</span>
+                <textarea type="text" name="attr_tspec_1" style="height: 40px; width: 740px"/></textarea>
+            </div>
+            <div style="display: flex">
+                <div class="threathp">
+                    <div>
+                        <span class="th">Threat 1</span>
+                    </div>
+                    <span class="th">Hits</span>
+                    <input type="number" name="attr_thp_1" style="height: 24px"/>
+                    <button 
+                        style="background-color: red;color: black;margin: 5px; width: 75px; text-wrap: auto" 
+                        type="roll" 
+                        name="act_tlink1"
+    					id="tlink1"
+    					value="!token-mod --set bar1_link|thp_1 bar1_max|[[@{selected|thp}]] name|1_@{selected|tname} --on showname">
+    				    Link Selected Token
+    				</button>
                 </div>
-            </fieldset>
+                <div class="threathp">
+                    <div>
+                        <span class="th">Threat 2</span>
+                    </div>
+                    <span class="th">Hits</span>
+                    <input type="number" name="attr_thp_2" style="height: 24px"/>
+                    <button 
+                        style="background-color: red;color: black;margin: 5px; width: 75px; text-wrap: auto" 
+                        type="roll" 
+                        name="act_tlink2"
+    					id="tlink2"
+    					value="!token-mod --set bar1_link|thp_2 bar1_max|[[@{selected|thp}]] name|2_@{selected|tname} --on showname">
+    				    Link Selected Token
+    				</button>
+                </div>
+                <div class="threathp">
+                    <div>
+                        <span class="th">Threat 3</span>
+                    </div>
+                    <span class="th">Hits</span>
+                    <input type="number" name="attr_thp_3" style="height: 24px"/>
+                    <button 
+                        style="background-color: red;color: black;margin: 5px; width: 75px; text-wrap: auto" 
+                        type="roll" 
+                        name="act_tlink3"
+    					id="tlink3"
+    					value="!token-mod --set bar1_link|thp_3 bar1_max|[[@{selected|thp}]] name|3_@{selected|tname} --on showname">
+    				    Link Selected Token
+    				</button>
+                </div>
+                <div class="threathp">
+                    <div>
+                        <span class="th">Threat 4</span>
+                    </div>
+                    <span class="th">Hits</span>
+                    <input type="number" name="attr_thp_4" style="height: 24px"/>
+                    <button 
+                        style="background-color: red;color: black;margin: 5px; width: 75px; text-wrap: auto" 
+                        type="roll" 
+                        name="act_tlink4"
+    					id="tlink4"
+    					value="!token-mod --set bar1_link|thp_4 bar1_max|[[@{selected|thp}]] name|4_@{selected|tname} --on showname">
+    				    Link Selected Token
+    				</button>
+                </div>
+                <div class="threathp">
+                    <div>
+                        <span class="th">Threat 5</span>
+                    </div>
+                    <span class="th">Hits</span>
+                    <input type="number" name="attr_thp_5" style="height: 24px"/>
+                    <button 
+                        style="background-color: red;color: black;margin: 5px; width: 75px; text-wrap: auto" 
+                        type="roll" 
+                        name="act_tlink5"
+    					id="tlink5"
+    					value="!token-mod --set bar1_link|thp_5 bar1_max|[[@{selected|thp}]] name|5_@{selected|tname} --on showname">
+    				    Link Selected Token
+    				</button>
+                </div>
+                <div class="threathp">
+                    <div>
+                        <span class="th">Threat 6</span>
+                    </div>
+                    <span class="th">Hits</span>
+                    <input type="number" name="attr_thp_6" style="height: 24px"/>
+                    <button 
+                        style="background-color: red;color: black;margin: 5px; width: 75px; text-wrap: auto" 
+                        type="roll" 
+                        name="act_tlink6"
+    					id="tlink6"
+    					value="!token-mod --set bar1_link|thp_6 bar1_max|[[@{selected|thp}]] name|6_@{selected|tname} --on showname">
+    				    Link Selected Token
+    				</button>
+                </div>
+            </div>
         </div>
         
         <div class='sheet-help'>
