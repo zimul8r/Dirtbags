@@ -91,14 +91,15 @@
                 <input class="role" type="text" name="attr_Alias" id="alias"/>
 
                 <span  for="RoleList" style="padding-left:5px;padding-right:5px"><b>ROLE</b></span>
-                <select name="attr_Role" id="RoleList" style="font-size: 1em;width: 22%;height: 1.1em;margin-bottom: 0px;font-family: 'Courier';background-color: rgb(225,225,225);padding: 0px;border: none;text-transform: uppercase;">
-                  <option value="infanteer">INFANTEER</option>
-                  <option value="combatmedic">COMBAT MEDIC</option>
-                  <option value="combatengineer">COMBAT ENGINEER</option>
-                  <option value="reconnaissance">RECONNAISSANCE</option>
-                  <option value="supportgunner">SUPPORT GUNNER</option>
-                </select>
-    
+                <input class="role" type="text" list="Rolelist" name="attr_Role" id="Role" />
+                <datalist id="Rolelist">
+                  <option value="INFANTEER" selected></option>
+                  <option value="COMBAT-MEDIC"></option>
+                  <option value="COMBAT-ENGINEER"></option>
+                  <option value="RECONNAISSANCE"></option>
+                  <option value="SUPPORT-GUNNER"></option>
+                </datalist>                
+
                 <span for="Sentence" style="font-family:'Courier';padding-left:5px;padding-right:5px"><b>SENTENCE</b></span>
                 <input class="role" type="number" min="0" name="attr_Sentence" id="Sentence"/>
     
