@@ -58,9 +58,16 @@ These 4 text areas are for listing your equipment and other details. The boxes w
 All of the other stats fields, M.I.L.K., Carrying Capacity, Confirmed Kills, Credits, and Bones, Cunning, Nerves, and body stats, are there to record and track your stats.
 
 (DM) Whenever you change the current value of Bones, Cunning, or Nerves, your ACTION Maximum will update to the sum of those three stats.
+
 ## The Threats Sheet
 This sheet is based on the Dirtbags! threat profiles, with some modifications to aid in online play and some concessions made due to the Roll20 system.
 
-The Threats Sheet is a table of threat statistics for your monsters. The ADD button adds new monster rows to the table. The relevant stats for a monster can be filled in. Since Dirtbags! often call for multiple monsters of the same type, an easy way to manage them without typing in the same stats multiple times is to just type the full stats in for the first instance of that monster type. Then you can add additional copies by just filling in the name and referring to the stats in the intitial copy.
+The Threats Sheet is a threat profile for one monster or group of monsters. The relevant stats for the monster type can be filled in. Since Dirtbags! often call for multiple monsters of the same type, there are 6 monster blocks at the bottom of the tab.
 
-Each monster row ends with a HP TAKEN field for keeping track of damage dealt to the monster. Since each row has its own HP TAKEN field, you can track the damage to each monster individually.
+The RESET ALL HITS button sets the hits on all 6 monster blocks to the starting HP of the monster type from the HP setting.
+
+Each of the six monster blocks has it's own Hits field for keeping track of damage dealt to the monster. Since each block has its own Hits field, you can track the damage to each monster individually.
+
+Each monster block can be linked to a different token. Drag a token from the Journal to the map for each copy of the monster you want to use. Then seelct them one at a time and click the corresponding Link Selected Token button for the block you want to link to that token. Once linked, the Hits in the monster block and Bar 1 of the token should be linked. The link button will also set the max HP onthe token to the monster type HP value and change the token name to an indexed copy of the monster type name.
+
+NOTE: There seems to be a little "glitchiness" in the Link button that I haven't fully diagnosed yet. If the link doesn't populate the max HP on the token, change the linked Hits value on the monster block a few times and try the Link button again. When everything is properly linked, the green health bar should appear above the icon with the correct number of current hits for the monster block.
