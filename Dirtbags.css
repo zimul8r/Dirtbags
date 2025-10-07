@@ -26,7 +26,6 @@ span.th {   /* Table headings */
 
 button[type=roll].sheet-blank-roll-button { 
  padding: 0px 8px 0px 0px; 
- margin: 1px;
  height: 1.3em;
  font-family:'Courier';
  font-size:16px;
@@ -39,6 +38,13 @@ div.threat {
     display: grid;
     grid-template-columns: 15% 5% 15% 5% 5% 5% 10% 20% 10%;
     column-gap: 5px;
+}
+
+div.threathp {
+    margin: 10px 10px 10px 10px;
+    border: 2px solid red;
+    text-align: center;
+    width: 100px;
 }
 
 div.pers {
@@ -98,13 +104,802 @@ input.sheet-toggle-hide:checked ~ div.sheet-body {
 /*Configure the tab buttons*/
 .sheet-pc,
 .sheet-threats, 
-.sheet-help {
+.sheet-help,
+.sheet-stats,
+.sheet-ops {
 	display: none;
 }
 
 /* show the selected tab */
 .sheet-tabstoggle[value="pc"] ~ div.sheet-pc,
 .sheet-tabstoggle[value="threats"] ~ div.sheet-threats,
-.sheet-tabstoggle[value="help"] ~ div.sheet-help {
+.sheet-tabstoggle[value="help"] ~ div.sheet-help,
+.sheet-tabstoggle[value="stats"] ~ div.sheet-stats,
+.sheet-tabstoggle[value="ops"] ~ div.sheet-ops {
 	display: block;
+}
+
+/* Action Dice area */
+/* Hide checkbox visually but keep it functional */
+.die0 {
+    display: none;
+}
+/* Hide image by default */
+.status-die0 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.die0:checked + .status-die0 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.die1 {
+    display: none;
+}
+/* Hide image by default */
+.status-die1 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.die1:checked + .status-die1 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.die2 {
+    display: none;
+}
+/* Hide image by default */
+.status-die2 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.die2:checked + .status-die2 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.die3 {
+    display: none;
+}
+/* Hide image by default */
+.status-die3 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.die3:checked + .status-die3 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.die4 {
+    display: none;
+}
+/* Hide image by default */
+.status-die4 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.die4:checked + .status-die4 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.die5 {
+    display: none;
+}
+/* Hide image by default */
+.status-die5 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.die5:checked + .status-die5 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.die6 {
+    display: none;
+}
+/* Hide image by default */
+.status-die6 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.die6:checked + .status-die6 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.die7 {
+    display: none;
+}
+/* Hide image by default */
+.status-die7 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.die7:checked + .status-die7 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.die8 {
+    display: none;
+}
+/* Hide image by default */
+.status-die8 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.die8:checked + .status-die8 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.die9 {
+    display: none;
+}
+/* Hide image by default */
+.status-die9 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.die9:checked + .status-die9 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.die10 {
+    display: none;
+}
+/* Hide image by default */
+.status-die10 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.die10:checked + .status-die10 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.die11 {
+    display: none;
+}
+/* Hide image by default */
+.status-die11 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.die11:checked + .status-die11 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.die12 {
+    display: none;
+}
+/* Hide image by default */
+.status-die12 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.die12:checked + .status-die12 {
+    display: block;
+}
+
+
+/* Ammo Dice area */
+/* Hide checkbox visually but keep it functional */
+.dieammo0 {
+    display: none;
+}
+/* Hide image by default */
+.status-dieammo0 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.dieammo0:checked + .status-dieammo0 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.dieammo1 {
+    display: none;
+}
+/* Hide image by default */
+.status-dieammo1 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.dieammo1:checked + .status-dieammo1 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.dieammo2 {
+    display: none;
+}
+/* Hide image by default */
+.status-dieammo2 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.dieammo2:checked + .status-dieammo2 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.dieammo3 {
+    display: none;
+}
+/* Hide image by default */
+.status-dieammo3 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.dieammo3:checked + .status-dieammo3 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.dieammo4 {
+    display: none;
+}
+/* Hide image by default */
+.status-dieammo4 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.dieammo4:checked + .status-dieammo4 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.dieammo5 {
+    display: none;
+}
+/* Hide image by default */
+.status-dieammo5 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.dieammo5:checked + .status-dieammo5 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.dieammo6 {
+    display: none;
+}
+/* Hide image by default */
+.status-dieammo6 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.dieammo6:checked + .status-dieammo6 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.dieammo7 {
+    display: none;
+}
+/* Hide image by default */
+.status-dieammo7 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.dieammo7:checked + .status-dieammo7 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.dieammo8 {
+    display: none;
+}
+/* Hide image by default */
+.status-dieammo8 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.dieammo8:checked + .status-dieammo8 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.dieammo9 {
+    display: none;
+}
+/* Hide image by default */
+.status-dieammo9 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.dieammo9:checked + .status-dieammo9 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.dieammo10 {
+    display: none;
+}
+/* Hide image by default */
+.status-dieammo10 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.dieammo10:checked + .status-dieammo10 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.dieammo11 {
+    display: none;
+}
+/* Hide image by default */
+.status-dieammo11 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.dieammo11:checked + .status-dieammo11 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.dieammo12 {
+    display: none;
+}
+/* Hide image by default */
+.status-dieammo12 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.dieammo12:checked + .status-dieammo12 {
+    display: block;
+}
+
+/* Roll Pool Dice area */
+/* Hide checkbox visually but keep it functional */
+.roll0 {
+    display: none;
+}
+/* Hide image by default */
+.status-roll0 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.roll0:checked + .status-roll0 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.roll1 {
+    display: none;
+}
+/* Hide image by default */
+.status-roll1 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.roll1:checked + .status-roll1 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.roll2 {
+    display: none;
+}
+/* Hide image by default */
+.status-roll2 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.roll2:checked + .status-roll2 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.roll3 {
+    display: none;
+}
+/* Hide image by default */
+.status-roll3 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.roll3:checked + .status-roll3 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.roll4 {
+    display: none;
+}
+/* Hide image by default */
+.status-roll4 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.roll4:checked + .status-roll4 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.roll5 {
+    display: none;
+}
+/* Hide image by default */
+.status-roll5 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.roll5:checked + .status-roll5 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.roll6 {
+    display: none;
+}
+/* Hide image by default */
+.status-roll6 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.roll6:checked + .status-roll6 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.roll7 {
+    display: none;
+}
+/* Hide image by default */
+.status-roll7 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.roll7:checked + .status-roll7 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.roll8 {
+    display: none;
+}
+/* Hide image by default */
+.status-roll8 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.roll8:checked + .status-roll8 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.roll9 {
+    display: none;
+}
+/* Hide image by default */
+.status-roll9 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.roll9:checked + .status-roll9 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.roll10 {
+    display: none;
+}
+/* Hide image by default */
+.status-roll10 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.roll10:checked + .status-roll10 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.roll11 {
+    display: none;
+}
+/* Hide image by default */
+.status-roll11 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.roll11:checked + .status-roll11 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.roll12 {
+    display: none;
+}
+/* Hide image by default */
+.status-roll12 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.roll12:checked + .status-roll12 {
+    display: block;
+}
+
+/* Reserve Pool Dice area */
+/* Hide checkbox visually but keep it functional */
+.reserve0 {
+    display: none;
+}
+/* Hide image by default */
+.status-reserve0 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.reserve0:checked + .status-reserve0 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.reserve1 {
+    display: none;
+}
+/* Hide image by default */
+.status-reserve1 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.reserve1:checked + .status-reserve1 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.reserve2 {
+    display: none;
+}
+/* Hide image by default */
+.status-reserve2 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.reserve2:checked + .status-reserve2 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.reserve3 {
+    display: none;
+}
+/* Hide image by default */
+.status-reserve3 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.reserve3:checked + .status-reserve3 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.reserve4 {
+    display: none;
+}
+/* Hide image by default */
+.status-reserve4 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.reserve4:checked + .status-reserve4 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.reserve5 {
+    display: none;
+}
+/* Hide image by default */
+.status-reserve5 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.reserve5:checked + .status-reserve5 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.reserve6 {
+    display: none;
+}
+/* Hide image by default */
+.status-reserve6 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.reserve6:checked + .status-reserve6 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.reserve7 {
+    display: none;
+}
+/* Hide image by default */
+.status-reserve7 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.reserve7:checked + .status-reserve7 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.reserve8 {
+    display: none;
+}
+/* Hide image by default */
+.status-reserve8 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.reserve8:checked + .status-reserve8 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.reserve9 {
+    display: none;
+}
+/* Hide image by default */
+.status-reserve9 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.reserve9:checked + .status-reserve9 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.reserve10 {
+    display: none;
+}
+/* Hide image by default */
+.status-reserve10 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.reserve10:checked + .status-reserve10 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.reserve11 {
+    display: none;
+}
+/* Hide image by default */
+.status-reserve11 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.reserve11:checked + .status-reserve11 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.reserve12 {
+    display: none;
+}
+/* Hide image by default */
+.status-reserve12 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.reserve12:checked + .status-reserve12 {
+    display: block;
 }
