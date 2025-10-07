@@ -3,19 +3,23 @@
 <!-- Start of Sheet-->
 <html>
     <body>
-        <div style="width: 60%;display: inline-flex;;align-items: center">
+        <div style="width: 60%;display: inline-flex;align-items: center;margin-bottom: 5px">
             <button style="background-color: blue;color: white;" type="action" name="act_pc" >PC</button>
             &nbsp;&nbsp;
-            <button style="background-color: red;color: white;" type="action" name="act_threats" >THREATS</button>
+            <button style="background-color: red;color: black;" type="action" name="act_threats" >THREATS</button>
             &nbsp;&nbsp;
             <button style="background-color: darkblue;color: white;" type="action" name="act_help" >HELP</button>
+            &nbsp;&nbsp;
+            <button style="background-color: green;color: white;" type="action" name="act_stats" >STATS</button>
+            &nbsp;&nbsp;
+            <button style="background-color: yellow;color: black;" type="action" name="act_ops" >OPS</button>
             &nbsp;&nbsp;
             <label for="attr_dmgr" style="width:auto;margin:0px">Dice Manager</label>
             <input type="checkbox" name="attr_dmgr"/>
         </div>
 
         <input type='hidden' class='sheet-tabstoggle' name='attr_sheetTab'  value='pc'  />
-        
+
         <div class='sheet-pc' style="background-image: url('https://github.com/zimul8r/Dirtbags/blob/main/HorizontalDirtbags.png?raw=true'); background-position: 100% 93%; background-repeat: no-repeat; background-size: 23%;background-color: white">
 
             <!-- Roll Pools            -->
@@ -91,15 +95,14 @@
                 <input class="role" type="text" name="attr_Alias" id="alias"/>
 
                 <span  for="RoleList" style="padding-left:5px;padding-right:5px"><b>ROLE</b></span>
-                <input class="role" type="text" list="Rolelist" name="attr_Role" id="Role" />
-                <datalist id="Rolelist">
-                  <option value="APE" selected></option>
-                  <option value="PILL"></option>
-                  <option value="TECH"></option>
-                  <option value="HEN"></option>
-                  <option value="MUSCLEHEAD"></option>
-                </datalist>                
-
+                <select name="attr_Role" id="RoleList" style="font-size: 1em;width: 22%;height: 1.1em;margin-bottom: 0px;font-family: 'Courier';background-color: rgb(225,225,225);padding: 0px;border: none;text-transform: uppercase;">
+                  <option value="infanteer" selected>INFANTEER</option>
+                  <option value="combatmedic">COMBAT MEDIC</option>
+                  <option value="combatengineer">COMBAT ENGINEER</option>
+                  <option value="reconnaissance">RECONNAISSANCE</option>
+                  <option value="supportgunner">SUPPORT GUNNER</option>
+                </select>
+    
                 <span for="Sentence" style="font-family:'Courier';padding-left:5px;padding-right:5px"><b>SENTENCE</b></span>
                 <input class="role" type="number" min="0" name="attr_Sentence" id="Sentence"/>
     
@@ -244,9 +247,8 @@
                     <input type="checkbox" name="attr_other3_5" style="height: 1.5em;width: 1.5em">
                 </span>
             </div>
-            </div>
         </div>
-        
+        </div>
         <div class='sheet-threats'>
             <div style="padding: 5px 0px 5px 0px;font-size: 18px">
                 <span class="th">Threat Type</span>
@@ -282,9 +284,6 @@
                       <option value="near">NEAR</option>
                       <option value="far">FAR</option>
                     </select>
-                </span>
-                <span style="padding: 4px 10px 4px 5px;font-size: 13px">
-  		    <button type="action" class="reload" name="act_ResetHits" id="ResetHits">RESET ALL HITS</button>
                 </span>
             </div>
 
@@ -385,7 +384,6 @@
                 </div>
             </div>
         </div>
-        
         <div class='sheet-help'>
             <h1>How To Use This Sheet</h1>
 
@@ -491,26 +489,861 @@
             <h2>The Threats Sheet</h2>
             <p>This sheet is based on the Dirtbags! threat profiles, with some modifications to aid in online play and some concessions made due to the Roll20 system.</p>
 
-            <p> The Threats Sheet is a threat profile for one monster or group of monsters.
-            The relevant stats for the monster type can be filled in. Since Dirtbags! often call for multiple monsters of the same type, there are 6 monster blocks at the bottom of the tab.</p>
-            
-            <p> The RESET ALL HITS button sets the hits on all 6 monster blocks to the starting HP of the monster type from the HP setting.</p>
+            <p> The Threats Sheet is a table of threat statistics for your monsters.
+            The ADD button adds new monster rows to the table.
+            The relevant stats for a monster can be filled in. Since Dirtbags! often call for multiple monsters of the same type, 
+            an easy way to manage them without typing in the same stats multiple times is to just type the full stats in for the first instance of that monster type.
+            Then you can add additional copies by just filling in the name and referring to the stats in the intitial copy.</p>
 
-            <p>Each of the six monster blocks has it's own Hits field for keeping track of damage dealt to the monster. 
-            Since each block has its own Hits field, you can track the damage to each monster individually.</p>
-            
-            <p>Each monster block can be linked to a different token. Drag a token from the Journal to the map for each copy of the monster you want to use.
-            Then seelct them one at a time and click the corresponding Link Selected Token button for the block you want to link to that token. 
-            Once linked, the Hits in the monster block and Bar 1 of the token should be linked. 
-            The link button will also set the max HP onthe token to the monster type HP value and change the token name to an indexed copy of the monster type name.</p>
-
-            <strong>NOTE: There seems to be a little "glitchiness" in the Link button that I haven't fully diagnosed yet. If the link doesn't populate the max
-            HP on the token, change the linked Hits value on the monster block a few times and try the Link button again. When everything is properly linked, 
-            the green health bar should appear above the icon with the correct number of current hits for the monster block. </strong>
+            <p>Each monster row ends with a HP TAKEN field for keeping track of damage dealt to the monster. 
+            Since each row has its own HP TAKEN field, you can track the damage to each monster individually.</p>
         </div>
-        
+        <div class='sheet-ops'>
+            <div style="height: 350px; display: grid;grid-template-columns: 300px 370px 240px;column-gap: 5px;">
+                <!-- Name, Role, Sentencing, etc.            -->
+                <div style="grid-row: 1;grid-column: 1;display: grid;grid-auto-rows: 35px;font-family:'Courier';font-size: 125%;text-align:left;width:100%;position:relative;border: 1px solid black;">
+                    <div style="display: inline">
+                        <span for="player" style="font-family:'Courier';padding-left:5px;padding-right:5px"><b>PLAYER</b></span>
+                        <input class="role" type="text" name="attr_Player" id="alias" style="width: 50%"/>
+                    </div>
+                    <div style="display: inline">
+                        <span for="alias" style="font-family:'Courier';padding-left:5px;padding-right:5px"><b>INMATE ALIAS</b></span>
+                        <input class="role" type="text" name="attr_Alias" id="alias" style="width: 50%"/>
+                    </div>
+                    <div style="display: inline">
+                        <span  for="RoleList" style="padding-left:5px;padding-right:5px"><b>ROLE</b></span>
+                        <select name="attr_Role" id="RoleList" style="font-size: 1em;width: 50%;height: 1.1em;margin-bottom: 0px;font-family: 'Courier';background-color: rgb(225,225,225);padding: 0px;border: none;text-transform: uppercase;">
+                          <option value="infanteer" selected>INFANTEER</option>
+                          <option value="combatmedic">COMBAT MEDIC</option>
+                          <option value="combatengineer">COMBAT ENGINEER</option>
+                          <option value="reconnaissance">RECONNAISSANCE</option>
+                          <option value="supportgunner">SUPPORT GUNNER</option>
+                        </select>
+                    </div>
+                    <div style="display: inline">
+                        <span for="Sentence" style="font-family:'Courier';padding-left:5px;padding-right:5px"><b>SENTENCE</b></span>
+                        <input class="role" type="number" min="0" name="attr_Sentence" id="Sentence"/> 
+                        <span> / </span>
+                        <input class="role" type="number" min="0" name="attr_Remaining" id="Remaining"/>
+                    </div>
+                    <div style="display: flex">
+                        <span style="font-family:'Courier';padding-left:5px;padding-right:5px; width: 70px"><b>TRAITS</b></span>
+                        <textarea name="attr_Traits" id="PE" style="height: 4em; width: 60%; resize: vertical;"></textarea>
+                    </div>
+                    <div style="display: flex;grid-row: 7">
+                        <span style="font-family:'Courier';padding-left:5px;padding-right:5px; width: 70px"><b>P.O.</b></span>
+                        <textarea name="attr_Po" id="PE" style="height: 4em; width: 60%; resize: vertical;"></textarea>
+                    </div>
+                    <div style="display: flex;grid-row: 9">
+                        <span style="font-family:'Courier';padding-left:5px;padding-right:5px; width: 70px"><b>FALLOUT</b></span>
+                        <textarea name="attr_Fallout" id="PE" style="height: 4em; width: 60%; resize: vertical;"></textarea>
+                    </div>
+                </div>
+                <!-- Body Damage area -->
+                <div style="grid-row: 1;grid-column: 2;background-image:url('https://github.com/zimul8r/Dirtbags/blob/main/Body.png?raw=true');background-repeat:no-repeat;background-size: 34%;background-position: 48%;height: auto;width: auto;border: 1px solid black;padding-left: 14px;padding-top: 5px;">
+                    <div style="width: 100%;height:100%; display:grid;grid-auto-rows:45px; grid-auto-columns:75px;">
+                        <div style="grid-row:1; grid-column:1">
+                            <label>HEAD</label>
+                            <div>
+                                <input type="number" name="attr_Head" id="Head" min="0" style="font-size: 16px;font-weight: bold;padding: 0;padding-left: 5px;border: 0;width: 2em;background-color: rgb(250,250,0)">/<input type="number" name="attr_HeadTot" id="HeadTot" min="0" style="font-size: 16px;font-weight: bold;padding: 0;padding-left: 5px;border: 0;width: 2em;background-color: rgb(250,250,0)">
+                            </div>
+                            <div style="display: inline-flex">
+                                BLEEDING&nbsp;
+                                <input type="checkbox" name="attr_headbleeding" style="height: 1.5em;width: 1.5em; accent-color: red">
+                            </div>
+                        </div>
+                        <div style="grid-row:3; grid-column:1">
+                            <label>R ARM</label>
+                            <div>
+                                <input type="number" name="attr_Rarm" id="Rarm" min="0" style="font-size: 16px;font-weight: bold;padding: 0;padding-left: 5px;border: 0;width: 2em;background-color: rgb(250,250,0)">/<input type="number" name="attr_RarmTot" id="RarmTot" min="0" style="font-size: 16px;font-weight: bold;padding: 0;padding-left: 5px;border: 0;width: 2em;background-color: rgb(250,250,0)">
+                            </div>
+                            <div style="display: inline-flex">
+                                BLEEDING&nbsp;
+                                <input type="checkbox" name="attr_rarmbleeding" style="height: 1.5em;width: 1.5em; accent-color: red">
+                            </div>
+                            <div style="display: inline-flex">
+                                RUINED&nbsp;
+                                <input type="checkbox" name="attr_rarmruined" style="height: 1.5em;width: 1.5em; accent-color: yellow">
+                            </div>
+                            <div style="display: inline-flex">
+                                AMPUTATED&nbsp;
+                                <input type="checkbox" name="attr_rarmamputated" style="height: 1.5em;width: 1.5em; accent-color: purple">
+                            </div>
+    
+                        </div>
+                        <div style="grid-row:6; grid-column:1">
+                            <label>R LEG</label>
+                            <div>
+                                <input type="number" name="attr_Rleg" id="Rleg" min="0" style="font-size: 16px;font-weight: bold;padding: 0;padding-left: 5px;border: 0;width: 2em;background-color: rgb(250,250,0)">/<input type="number" name="attr_RlegTot" id="RlegTot" min="0" style="font-size: 16px;font-weight: bold;padding: 0;padding-left: 5px;border: 0;width: 2em;background-color: rgb(250,250,0)">
+                            </div>
+                            <div style="display: inline-flex">
+                                BLEEDING&nbsp;
+                                <input type="checkbox" name="attr_rlegbleeding" style="height: 1.5em;width: 1.5em; accent-color: red">
+                            </div>
+                            <div style="display: inline-flex">
+                                RUINED&nbsp;
+                                <input type="checkbox" name="attr_rlegruined" style="height: 1.5em;width: 1.5em; accent-color: yellow">
+                            </div>
+                            <div style="display: inline-flex">
+                                AMPUTATED&nbsp;
+                                <input type="checkbox" name="attr_rlegamputated" style="height: 1.5em;width: 1.5em; accent-color: purple">
+                            </div>
+                        </div>
+                        <div style="grid-row:1; grid-column:4">
+                            <label>TORSO</label>
+                            <div>
+                                <input type="number" name="attr_Torso" id="Torso" min="0" style="font-size: 16px;font-weight: bold;padding: 0;padding-left: 5px;border: 0;width: 2em;background-color: rgb(250,250,0)">/<input type="number" name="attr_TorsoTot" id="TorsoTot" min="0" style="font-size: 16px;font-weight: bold;padding: 0;padding-left: 5px;border: 0;width: 2em;background-color: rgb(250,250,0)">
+                            </div>
+                            <div style="display: inline-flex">
+                                BLEEDING&nbsp;
+                                <input type="checkbox" name="attr_torsobleeding" style="height: 1.5em;width: 1.5em; accent-color: red">
+                            </div>
+                            <div style="display: inline-flex">
+                                INCAPACITATED&nbsp;
+                                <input type="checkbox" name="attr_torsoruined" style="height: 1.5em;width: 1.5em; accent-color: black">
+                            </div>
+                        </div>
+                        <div style="grid-row:3; grid-column:4">
+                            <label>L ARM</label>
+                            <div>
+                                <input type="number" name="attr_Larm" id="Larm" min="0" style="font-size: 16px;font-weight: bold;padding: 0;padding-left: 5px;border: 0;width: 2em;background-color: rgb(250,250,0)">/<input type="number" name="attr_LarmTot" id="LarmTot" min="0" style="font-size: 16px;font-weight: bold;padding: 0;padding-left: 5px;border: 0;width: 2em;background-color: rgb(250,250,0)">
+                            </div>
+                            <div style="display: inline-flex">
+                                BLEEDING&nbsp;
+                                <input type="checkbox" name="attr_larmbleeding" style="height: 1.5em;width: 1.5em; accent-color: red">
+                            </div>
+                            <div style="display: inline-flex">
+                                RUINED&nbsp;
+                                <input type="checkbox" name="attr_larmruined" style="height: 1.5em;width: 1.5em; accent-color: yellow">
+                            </div>
+                            <div style="display: inline-flex">
+                                AMPUTATED&nbsp;
+                                <input type="checkbox" name="attr_larmamputated" style="height: 1.5em;width: 1.5em; accent-color: purple">
+                            </div>
+                        </div>
+                        <div style="grid-row:6; grid-column:4">
+                            <label>R LEG</label>
+                            <div>
+                                <input type="number" name="attr_Lleg" id="Lleg" min="0" style="font-size: 16px;font-weight: bold;padding: 0;padding-left: 5px;border: 0;width: 2em;background-color: rgb(250,250,0)">/<input type="number" name="attr_LlegTot" id="LlegTot" min="0" style="font-size: 16px;font-weight: bold;padding: 0;padding-left: 5px;border: 0;width: 2em;background-color: rgb(250,250,0)">
+                            </div>
+                            <div style="display: inline-flex">
+                                BLEEDING&nbsp;
+                                <input type="checkbox" name="attr_llegbleeding" style="height: 1.5em;width: 1.5em; accent-color: red">
+                            </div>
+                            <div style="display: inline-flex">
+                                RUINED&nbsp;
+                                <input type="checkbox" name="attr_llegruined" style="height: 1.5em;width: 1.5em; accent-color: yellow">
+                            </div>
+                            <div style="display: inline-flex">
+                                AMPUTATED&nbsp;
+                                <input type="checkbox" name="attr_llegamputated" style="height: 1.5em;width: 1.5em; accent-color: purple">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- MILK, Carry Cap, Kills, etc.            -->
+                <div style="grid-row: 1;grid-column: 3;display: grid;grid-auto-rows: auto;font-family:'Courier';font-size: 125%;text-align:left;width:100%;position:relative; border: 1px solid black;">
+                    <div style="display: inline">
+                        <span for="bones" style="font-family:'Courier';padding-left:5px;padding-right:5px"><b>BONES</b></span>
+                        <input class="role" type="number" name="attr_Bones" id="Bones" style="width: 25%"/>
+                        <span>/</span>
+                        <input class="role" type="number" name="attr_BonesTot" id="BonesTot" style="width: 25%"/>
+                    </div>
+                    <div style="display: inline">
+                        <span for="cunning" style="font-family:'Courier';padding-left:5px;padding-right:5px"><b>CUNNING</b></span>
+                        <input class="role" type="number" name="attr_Cunning" id="Cunning" style="width: 25%"/>
+                        <span>/</span>
+                        <input class="role" type="number" name="attr_CunningTot" id="CunningTot" style="width: 25%"/>
+                    </div>
+                    <div style="display: inline">
+                        <span for="nerves" style="font-family:'Courier';padding-left:5px;padding-right:5px"><b>NERVES</b></span>
+                        <input class="role" type="number" name="attr_Nerves" id="Nerves" style="width: 25%"/>
+                        <span>/</span>
+                        <input class="role" type="number" name="attr_NervesTot" id="NervesTot" style="width: 25%"/>
+                    </div>
+                    <div style="display: inline">
+                        <span for="milk" style="font-family:'Courier';padding-left:5px;padding-right:5px"><b>MILK</b></span>
+                        <input class="role" type="number" name="attr_Milk" id="Milk" style="width: 25%"/>
+                        <span>/</span>
+                        <input class="role" type="number" name="attr_MilkTot" id="MilkTot" style="width: 25%"/>
+                    </div>
+                    <div style="display: inline">
+                        <span for="capacity" style="font-family:'Courier';padding-left:5px;padding-right:5px"><b>CARRY</b></span>
+                        <input class="role" type="number" name="attr_Capacity" id="Capacity" style="width: 25%"/>
+                        <span>/</span>
+                        <input class="role" type="number" name="attr_CapacityTot" id="CapacityTot" style="width: 25%"/>
+                    </div>
+                    <div style="display: inline">
+                        <span for="kills" style="font-family:'Courier';padding-left:5px;padding-right:5px"><b>KILLS</b></span>
+                        <input class="role" type="number" name="attr_Kills" id="Kills" style="width: 25%"/>
+                        <span>/</span>
+                        <input class="role" type="number" name="attr_KillsTot" id="KillsTot" style="width: 25%"/>
+                    </div>
+                    <div style="display: inline">
+                        <span for="credits" style="font-family:'Courier';padding-left:5px;padding-right:5px"><b>CREDITS</b></span>
+                        <input class="role" type="number" name="attr_Credits" id="Credits" style="width: 50%"/>
+                    </div>
+                    <!-- add Checkbox Weapon Cap Ammo table --> 
+                    <div style="display: grid;grid-template-columns: 20px 120px 50px 50px;">
+                        <b style="grid-row: 1;grid-column: 2;"> WEAPON </b>
+                        <b style="grid-row: 1;grid-column: 3;"> CAP d6 </b>
+                        <b style="grid-row: 1;grid-column: 4;"> AMMO </b>
+                        <!-- Weapon 1 -->
+                        <input type="checkbox" name="attr_weapon1" style="grid-row: 2;grid-column: 1;height: 1.5em;width: 1.5em; accent-color: red">
+                        <input style="grid-row: 2;grid-column: 2;width: auto;" type="text" name="attr_weapon1name"/>
+                        <input style="grid-row: 2;grid-column: 3;width: auto;" type="number" name="attr_weapon1cap"/>
+                        <input style="grid-row: 2;grid-column: 4;width: auto;" type="number" name="attr_weapon1ammo"/>
+                        <!-- Weapon 2 -->
+                        <input type="checkbox" name="attr_weapon2" style="grid-row: 3;grid-column: 1;height: 1.5em;width: 1.5em; accent-color: red">
+                        <input style="grid-row: 3;grid-column: 2;width: auto;" type="text" name="attr_weapon2name"/>
+                        <input style="grid-row: 3;grid-column: 3;width: auto;" type="number" name="attr_weapon2cap"/>
+                        <input style="grid-row: 3;grid-column: 4;width: auto;" type="number" name="attr_weapon2ammo"/>
+                        <!-- Weapon 3 -->
+                        <input type="checkbox" name="attr_weapon3" style="grid-row: 4;grid-column: 1;height: 1.5em;width: 1.5em; accent-color: red">
+                        <input style="grid-row: 4;grid-column: 2;width: auto;" type="text" name="attr_weapon3name"/>
+                        <input style="grid-row: 4;grid-column: 3;width: auto;" type="number" name="attr_weapon3cap"/>
+                        <input style="grid-row: 4;grid-column: 4;width: auto;" type="number" name="attr_weapon3ammo"/>
+                        <!-- Weapon 4 -->
+                        <input type="checkbox" name="attr_weapon4" style="grid-row: 5;grid-column: 1;height: 1.5em;width: 1.5em; accent-color: red">
+                        <input style="grid-row: 5;grid-column: 2;width: auto;" type="text" name="attr_weapon4name"/>
+                        <input style="grid-row: 5;grid-column: 3;width: auto;" type="number" name="attr_weapon4cap"/>
+                        <input style="grid-row: 5;grid-column: 4;width: auto;" type="number" name="attr_weapon4ammo"/>
+                    </div>
+                </div>
+            </div>
+            <div style="display: grid;grid-auto-columns: 150px; column-gap: 3px;">
+                <!-- Action die area -->
+                <div style="grid-row: 1;grid-column: 1;text-align: center">
+                    <span>ACTION DICE</span>
+                    <input type="checkbox" name="attr_die0" value="1" class="die0" />
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/0d6Y.png" class="status-die0" alt="0 Action dice"/>
+                    <input type="checkbox" name="attr_die1" value="1" class="die1"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/1d6Y.png" class="status-die1" alt="1 Action dice"/>
+                    <input type="checkbox" name="attr_die2" value="1" class="die2"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/2d6Y.png" class="status-die2" alt="2 Action dice"/>
+                    <input type="checkbox" name="attr_die3" value="1" class="die3"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/3d6Y.png" class="status-die3" alt="3 Action dice"/>
+                    <input type="checkbox" name="attr_die4" value="1" class="die4"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/4d6Y.png" class="status-die4" alt="4 Action dice"/>
+                    <input type="checkbox" name="attr_die5" value="1" class="die5"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/5d6Y.png" class="status-die5" alt="5 Action dice"/>
+                    <input type="checkbox" name="attr_die6" value="1" class="die6"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/6d6Y.png" class="status-die6" alt="6 Action dice"/>
+                    <input type="checkbox" name="attr_die7" value="1" class="die7"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/7d6Y.png" class="status-die7" alt="7 Action dice"/>
+                    <input type="checkbox" name="attr_die8" value="1" class="die8"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/8d6Y.png" class="status-die8" alt="8 Action dice"/>
+                    <input type="checkbox" name="attr_die9" value="1" class="die9"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/9d6Y.png" class="status-die9" alt="9 Action dice"/>
+                    <input type="checkbox" name="attr_die10" value="1" class="die10"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/10d6Y.png" class="status-die10" alt="10 Action dice"/>
+                    <input type="checkbox" name="attr_die11" value="1" class="die11"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/11d6Y.png" class="status-die11" alt="11 Action dice"/>
+                    <input type="checkbox" name="attr_die12" value="1" class="die12"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/12d6Y.png" class="status-die12" alt="12 Action dice"/>
+    
+                    <button style="background-color: green;color: black;font-size: 2em;border-radius: 10px" type="action" name="act_actionpooladd" >+</button>
+                    <button style="background-color: red;color: black;font-size: 2em;border-radius: 10px" type="action" name="act_actionpoolremove" >âˆ’</button>
+                    <button style="background-color: white;color: black;font-size: 1.2em;border-radius: 10px" type="action" name="act_actionpoolclear" >RESET</button>
+                </div>
+                <!-- Ammo die area -->
+                <div style="grid-row: 1;grid-column: 2;text-align: center">
+                    <span>AMMO DICE</span>
+                    <input type="checkbox" name="attr_dieammo0" value="1" class="dieammo0" />
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/0d6Y.png" class="status-dieammo0" alt="0 Action dice"/>
+                    <input type="checkbox" name="attr_dieammo1" value="1" class="dieammo1"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/1d6Y.png" class="status-dieammo1" alt="1 Action dice"/>
+                    <input type="checkbox" name="attr_dieammo2" value="1" class="dieammo2"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/2d6Y.png" class="status-dieammo2" alt="2 Action dice"/>
+                    <input type="checkbox" name="attr_dieammo3" value="1" class="dieammo3"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/3d6Y.png" class="status-dieammo3" alt="3 Action dice"/>
+                    <input type="checkbox" name="attr_dieammo4" value="1" class="dieammo4"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/4d6Y.png" class="status-dieammo4" alt="4 Action dice"/>
+                    <input type="checkbox" name="attr_dieammo5" value="1" class="dieammo5"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/5d6Y.png" class="status-dieammo5" alt="5 Action dice"/>
+                    <input type="checkbox" name="attr_dieammo6" value="1" class="dieammo6"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/6d6Y.png" class="status-dieammo6" alt="6 Action dice"/>
+                    <input type="checkbox" name="attr_dieammo7" value="1" class="dieammo7"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/7d6Y.png" class="status-dieammo7" alt="7 Action dice"/>
+                    <input type="checkbox" name="attr_dieammo8" value="1" class="dieammo8"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/8d6Y.png" class="status-dieammo8" alt="8 Action dice"/>
+                    <input type="checkbox" name="attr_dieammo9" value="1" class="dieammo9"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/9d6Y.png" class="status-dieammo9" alt="9 Action dice"/>
+                    <input type="checkbox" name="attr_dieammo10" value="1" class="dieammo10"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/10d6Y.png" class="status-dieammo10" alt="10 Action dice"/>
+                    <input type="checkbox" name="attr_dieammo11" value="1" class="dieammo11"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/11d6Y.png" class="status-dieammo11" alt="11 Action dice"/>
+                    <input type="checkbox" name="attr_dieammo12" value="1" class="dieammo12"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/12d6Y.png" class="status-dieammo12" alt="12 Action dice"/>
+    
+                    <button style="background-color: green;color: black;font-size: 2em;border-radius: 10px" type="action" name="act_actionpooladd" >+</button>
+                    <button style="background-color: red;color: black;font-size: 2em;border-radius: 10px" type="action" name="act_actionpoolremove" >âˆ’</button>
+                    <button style="background-color: white;color: black;font-size: 1.2em;border-radius: 10px" type="action" name="act_actionpoolclear" >RESET</button>
+                </div>
+                <!-- Action Roll Pool area -->
+                <div style="grid-row: 1;grid-column: 3;text-align: center">
+                    <span>ROLL POOL</span>
+                    <input type="checkbox" name="attr_roll0" value="1" class="roll0" />
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/0d6Y.png" class="status-roll0" alt="0 Action dice"/>
+                    <input type="checkbox" name="attr_roll1" value="1" class="roll1"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/1d6Y.png" class="status-roll1" alt="1 Action dice"/>
+                    <input type="checkbox" name="attr_roll2" value="1" class="roll2"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/2d6Y.png" class="status-roll2" alt="2 Action dice"/>
+                    <input type="checkbox" name="attr_roll3" value="1" class="roll3"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/3d6Y.png" class="status-roll3" alt="3 Action dice"/>
+                    <input type="checkbox" name="attr_roll4" value="1" class="roll4"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/4d6Y.png" class="status-roll4" alt="4 Action dice"/>
+                    <input type="checkbox" name="attr_roll5" value="1" class="roll5"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/5d6Y.png" class="status-roll5" alt="5 Action dice"/>
+                    <input type="checkbox" name="attr_roll6" value="1" class="roll6"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/6d6Y.png" class="status-roll6" alt="6 Action dice"/>
+                    <input type="checkbox" name="attr_roll7" value="1" class="roll7"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/7d6Y.png" class="status-roll7" alt="7 Action dice"/>
+                    <input type="checkbox" name="attr_roll8" value="1" class="roll8"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/8d6Y.png" class="status-roll8" alt="8 Action dice"/>
+                    <input type="checkbox" name="attr_roll9" value="1" class="roll9"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/9d6Y.png" class="status-roll9" alt="9 Action dice"/>
+                    <input type="checkbox" name="attr_roll10" value="1" class="roll10"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/10d6Y.png" class="status-roll10" alt="10 Action dice"/>
+                    <input type="checkbox" name="attr_roll11" value="1" class="roll11"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/11d6Y.png" class="status-roll11" alt="11 Action dice"/>
+                    <input type="checkbox" name="attr_roll12" value="1" class="roll12"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/12d6Y.png" class="status-roll12" alt="12 Action dice"/>
+    
+                    <button style="background-color: green;color: black;font-size: 1.2em;display: block;margin: auto;border-radius: 10px" type="action" name="act_attack-button" >TAKE ACTION</button>
+                </div>
+                <!-- Action Reserve Pool area -->
+                <div style="grid-row: 1;grid-column: 5;text-align: center">
+                    <span>ACTION RESERVE</span>
+                    <input type="checkbox" name="attr_reserve0" value="1" class="reserve0" />
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/0d6Y.png" class="status-reserve0" alt="0 Action dice"/>
+                    <input type="checkbox" name="attr_reserve1" value="1" class="reserve1"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/1d6Y.png" class="status-reserve1" alt="1 Action dice"/>
+                    <input type="checkbox" name="attr_reserve2" value="1" class="reserve2"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/2d6Y.png" class="status-reserve2" alt="2 Action dice"/>
+                    <input type="checkbox" name="attr_reserve3" value="1" class="reserve3"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/3d6Y.png" class="status-reserve3" alt="3 Action dice"/>
+                    <input type="checkbox" name="attr_reserve4" value="1" class="reserve4"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/4d6Y.png" class="status-reserve4" alt="4 Action dice"/>
+                    <input type="checkbox" name="attr_reserve5" value="1" class="reserve5"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/5d6Y.png" class="status-reserve5" alt="5 Action dice"/>
+                    <input type="checkbox" name="attr_reserve6" value="1" class="reserve6"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/6d6Y.png" class="status-reserve6" alt="6 Action dice"/>
+                    <input type="checkbox" name="attr_reserve7" value="1" class="reserve7"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/7d6Y.png" class="status-reserve7" alt="7 Action dice"/>
+                    <input type="checkbox" name="attr_reserve8" value="1" class="reserve8"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/8d6Y.png" class="status-reserve8" alt="8 Action dice"/>
+                    <input type="checkbox" name="attr_reserve9" value="1" class="reserve9"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/9d6Y.png" class="status-reserve9" alt="9 Action dice"/>
+                    <input type="checkbox" name="attr_reserve10" value="1" class="reserve10"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/10d6Y.png" class="status-reserve10" alt="10 Action dice"/>
+                    <input type="checkbox" name="attr_reserve11" value="1" class="reserve11"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/11d6Y.png" class="status-reserve11" alt="11 Action dice"/>
+                    <input type="checkbox" name="attr_reserve12" value="1" class="reserve12"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/12d6Y.png" class="status-reserve12" alt="12 Action dice"/>
+    
+                    <button style="background-color: pink;color: black;font-size: 1.2em;display: block;margin: auto;border-radius: 10px" type="action" name="act_Replenish" >REPLENISH</button>
+                </div>
+                <!-- Ammo Reserve Pool area -->
+                <div style="grid-row: 1;grid-column: 6;text-align: center">
+                    <span>AMMO RESERVE</span>
+                    <input type="checkbox" name="attr_reserve0" value="1" class="reserve0" />
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/0d6Y.png" class="status-reserve0" alt="0 Action dice"/>
+                    <input type="checkbox" name="attr_reserve1" value="1" class="reserve1"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/1d6Y.png" class="status-reserve1" alt="1 Action dice"/>
+                    <input type="checkbox" name="attr_reserve2" value="1" class="reserve2"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/2d6Y.png" class="status-reserve2" alt="2 Action dice"/>
+                    <input type="checkbox" name="attr_reserve3" value="1" class="reserve3"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/3d6Y.png" class="status-reserve3" alt="3 Action dice"/>
+                    <input type="checkbox" name="attr_reserve4" value="1" class="reserve4"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/4d6Y.png" class="status-reserve4" alt="4 Action dice"/>
+                    <input type="checkbox" name="attr_reserve5" value="1" class="reserve5"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/5d6Y.png" class="status-reserve5" alt="5 Action dice"/>
+                    <input type="checkbox" name="attr_reserve6" value="1" class="reserve6"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/6d6Y.png" class="status-reserve6" alt="6 Action dice"/>
+                    <input type="checkbox" name="attr_reserve7" value="1" class="reserve7"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/7d6Y.png" class="status-reserve7" alt="7 Action dice"/>
+                    <input type="checkbox" name="attr_reserve8" value="1" class="reserve8"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/8d6Y.png" class="status-reserve8" alt="8 Action dice"/>
+                    <input type="checkbox" name="attr_reserve9" value="1" class="reserve9"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/9d6Y.png" class="status-reserve9" alt="9 Action dice"/>
+                    <input type="checkbox" name="attr_reserve10" value="1" class="reserve10"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/10d6Y.png" class="status-reserve10" alt="10 Action dice"/>
+                    <input type="checkbox" name="attr_reserve11" value="1" class="reserve11"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/11d6Y.png" class="status-reserve11" alt="11 Action dice"/>
+                    <input type="checkbox" name="attr_reserve12" value="1" class="reserve12"/>
+                    <img src="https://raw.githubusercontent.com/zimul8r/Dirtbags/refs/heads/main/12d6Y.png" class="status-reserve12" alt="12 Action dice"/>
+    
+                    <button style="background-color: pink;color: black;font-size: 1.2em;display: block;margin: auto;border-radius: 10px" type="action" name="act_Reload1" >RELOAD</button>
+                </div>
+            </div>
+            <div style="display: grid;grid-template-columns: 300px 40px 40px 50px 45px 35px 40px 35px 300px;text-align: center">
+                <span style="grid-column: 1;border: 1px solid black;">Description</span>
+                <span style="grid-column: 2;border: 1px solid black;">CAL/ Tier</span>
+                <span style="grid-column: 3;border: 1px solid black;">CAP</span>
+                <span style="grid-column: 4;border: 1px solid black;">MOD/ Cover</span>
+                <span style="grid-column: 5;border: 1px solid black;">ER</span>
+                <span style="grid-column: 6;border: 1px solid black;">HM</span>
+                <span style="grid-column: 7;border: 1px solid black;">Hits/ AV</span>
+                <span style="grid-column: 8;border: 1px solid black;">FSE</span>
+                <span style="grid-column: 9;border: 1px solid black;">Special</span>
+                <textarea name="attr_Weapons" style="grid-area: 2 / 1 / auto / 10; border: 1px solid black; height: 111px; width: auto; font-family: courier; resize: vertical; font-size: 0.9em;"></textarea>
+            </div>
+        </div>
+
         <script type="text/worker">
-            const buttonlist = ["pc","threats","help"];
+        
+            // Update the Action pool dice displayed
+            const displayActiondice = function(actionDice) {
+                console.log("In displayActiondice");
+                getAttrs([  "die0",
+                            "die1",
+                            "die2",
+                            "die3",
+                            "die4",
+                            "die5",
+                            "die6",
+                            "die7",
+                            "die8",
+                            "die9",
+                            "die10",
+                            "die11",
+                            "die12"], function(values) {
+                    console.log("Action dice:",actionDice);
+                    if(actionDice>=0) {
+                        setAttrs(   { die0:0,
+                                      die1:0,
+                                      die2:0,
+                                      die3:0,
+                                      die4:0,
+                                      die5:0,
+                                      die6:0,
+                                      die7:0,
+                                      die8:0,
+                                      die9:0,
+                                      die10:0,
+                                      die11:0,
+                                      die12:0});
+                        switch(actionDice){
+                            case 0:
+                                setAttrs({ die0:1});
+                                break;
+                            case 1:
+                                setAttrs({ die1:1});
+                                break;
+                            case 2:
+                                setAttrs({ die2:1});
+                                break;
+                            case 3:
+                                setAttrs({ die3:1});
+                                break;
+                            case 4:
+                                setAttrs({ die4:1});
+                                break;
+                            case 5:
+                                setAttrs({ die5:1});
+                                break;
+                            case 6:
+                                setAttrs({ die6:1});
+                                break;
+                            case 7:
+                                setAttrs({ die7:1});
+                                break;
+                            case 8:
+                                setAttrs({ die8:1});
+                                break;
+                            case 9:
+                                setAttrs({ die9:1});
+                                break;
+                            case 10:
+                                setAttrs({ die10:1});
+                                break;
+                            case 11:
+                                setAttrs({ die11:1});
+                                break;
+                            case 12:
+                                setAttrs({ die12:1});
+                                break;
+                            default:
+                                console.log("no match");
+                                break;
+                        } 
+                    }
+                });
+            }
+
+            // Update the Action Roll pool dice displayed
+            const displayRolldice = function(rollDice) {
+                console.log("In displayRolldice");
+                getAttrs([  "roll0",
+                            "roll1",
+                            "roll2",
+                            "roll3",
+                            "roll4",
+                            "roll5",
+                            "roll6",
+                            "roll7",
+                            "roll8",
+                            "roll9",
+                            "roll10",
+                            "roll11",
+                            "roll12"], function(values) {
+                    console.log("Roll dice:",rollDice);
+                    if(rollDice>=0) {
+                        setAttrs(   { roll0:0,
+                                      roll1:0,
+                                      roll2:0,
+                                      roll3:0,
+                                      roll4:0,
+                                      roll5:0,
+                                      roll6:0,
+                                      roll7:0,
+                                      roll8:0,
+                                      roll9:0,
+                                      roll10:0,
+                                      roll11:0,
+                                      roll12:0});
+                        switch(rollDice){
+                            case 0:
+                                setAttrs({ roll0:1});
+                                break;
+                            case 1:
+                                setAttrs({ roll1:1});
+                                break;
+                            case 2:
+                                setAttrs({ roll2:1});
+                                break;
+                            case 3:
+                                setAttrs({ roll3:1});
+                                break;
+                            case 4:
+                                setAttrs({ roll4:1});
+                                break;
+                            case 5:
+                                setAttrs({ roll5:1});
+                                break;
+                            case 6:
+                                setAttrs({ roll6:1});
+                                break;
+                            case 7:
+                                setAttrs({ roll7:1});
+                                break;
+                            case 8:
+                                setAttrs({ roll8:1});
+                                break;
+                            case 9:
+                                setAttrs({ roll9:1});
+                                break;
+                            case 10:
+                                setAttrs({ roll10:1});
+                                break;
+                            case 11:
+                                setAttrs({ roll11:1});
+                                break;
+                            case 12:
+                                setAttrs({ roll12:1});
+                                break;
+                            default:
+                                console.log("no match");
+                                break;
+                        } 
+                    }
+                });
+            }
+
+            // Update the Ammo Roll pool dice displayed
+            const displayAmmodice = function(ammoDice) {
+                console.log("In displayAmmodice");
+                getAttrs([  "dieammo0",
+                            "dieammo1",
+                            "dieammo2",
+                            "dieammo3",
+                            "dieammo4",
+                            "dieammo5",
+                            "dieammo6",
+                            "dieammo7",
+                            "dieammo8",
+                            "dieammo9",
+                            "dieammo10",
+                            "dieammo11",
+                            "dieammo12"], function(values) {
+                    console.log("dieammo dice:",ammoDice);
+                    if(ammoDice>=0) {
+                        setAttrs(   { dieammo0:0,
+                                      dieammo1:0,
+                                      dieammo2:0,
+                                      dieammo3:0,
+                                      dieammo4:0,
+                                      dieammo5:0,
+                                      dieammo6:0,
+                                      dieammo7:0,
+                                      dieammo8:0,
+                                      dieammo9:0,
+                                      dieammo10:0,
+                                      dieammo11:0,
+                                      dieammo12:0});
+                        switch(ammoDice){
+                            case 0:
+                                setAttrs({ dieammo0:1});
+                                break;
+                            case 1:
+                                setAttrs({ dieammo1:1});
+                                break;
+                            case 2:
+                                setAttrs({ dieammo2:1});
+                                break;
+                            case 3:
+                                setAttrs({ dieammo3:1});
+                                break;
+                            case 4:
+                                setAttrs({ dieammo4:1});
+                                break;
+                            case 5:
+                                setAttrs({ dieammo5:1});
+                                break;
+                            case 6:
+                                setAttrs({ dieammo6:1});
+                                break;
+                            case 7:
+                                setAttrs({ dieammo7:1});
+                                break;
+                            case 8:
+                                setAttrs({ dieammo8:1});
+                                break;
+                            case 9:
+                                setAttrs({ dieammo9:1});
+                                break;
+                            case 10:
+                                setAttrs({ dieammo10:1});
+                                break;
+                            case 11:
+                                setAttrs({ dieammo11:1});
+                                break;
+                            case 12:
+                                setAttrs({ dieammo12:1});
+                                break;
+                            default:
+                                console.log("no match");
+                                break;
+                        } 
+                    }
+                });
+            }
+
+            // Update the Action Reserve pool dice displayed
+            const displayReservedice = function(reserveDice) {
+                console.log("In displayReservedice");
+                getAttrs([  "reserve0",
+                            "reserve1",
+                            "reserve2",
+                            "reserve3",
+                            "reserve4",
+                            "reserve5",
+                            "reserve6",
+                            "reserve7",
+                            "reserve8",
+                            "reserve9",
+                            "reserve10",
+                            "reserve11",
+                            "reserve12"], function(values) {
+                    console.log("Action Reserve dice:",reserveDice);
+                    if(reserveDice>=0) {
+                        setAttrs(   { reserve0:0,
+                                      reserve1:0,
+                                      reserve2:0,
+                                      reserve3:0,
+                                      reserve4:0,
+                                      reserve5:0,
+                                      reserve6:0,
+                                      reserve7:0,
+                                      reserve8:0,
+                                      reserve9:0,
+                                      reserve10:0,
+                                      reserve11:0,
+                                      reserve12:0});
+                        switch(reserveDice){
+                            case 0:
+                                setAttrs({ reserve0:1});
+                                break;
+                            case 1:
+                                setAttrs({ reserve1:1});
+                                break;
+                            case 2:
+                                setAttrs({ reserve2:1});
+                                break;
+                            case 3:
+                                setAttrs({ reserve3:1});
+                                break;
+                            case 4:
+                                setAttrs({ reserve4:1});
+                                break;
+                            case 5:
+                                setAttrs({ reserve5:1});
+                                break;
+                            case 6:
+                                setAttrs({ reserve6:1});
+                                break;
+                            case 7:
+                                setAttrs({ reserve7:1});
+                                break;
+                            case 8:
+                                setAttrs({ reserve8:1});
+                                break;
+                            case 9:
+                                setAttrs({ reserve9:1});
+                                break;
+                            case 10:
+                                setAttrs({ reserve10:1});
+                                break;
+                            case 11:
+                                setAttrs({ reserve11:1});
+                                break;
+                            case 12:
+                                setAttrs({ reserve12:1});
+                                break;
+                            default:
+                                console.log("no match");
+                                break;
+                        } 
+                    }
+                });
+            }
+
+            // Add event listener to your button
+            on('clicked:attack-button', function(eventInfo) {
+                console.log("attack-button test");
+                // Define your roll formula
+                let rollFormula = "&{template:default} {{name=Action}} {{Rolling=[[@{ActionPool}]] dice}} {{Difficulty=[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}]]}} {{Successes=[[{[[@{ActionPool}]]d6cs>6cf<[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}-1]]}>[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}]]]]}}";
+                
+                getAttrs([  "ActionPool",
+                            "ActionRes",
+                            "Action"], function(values) {
+                    // Start the roll
+                    startRoll(rollFormula, function(results) {
+                        console.log("roll results");
+                        let R = results.results.Rolling.result;
+                        let S = results.results.Successes.result;
+                        console.log("Rolled ",R,"Successes ",S);
+
+                        // Reset Roll Pool and Reserve
+                        console.log(parseInt(values.ActionRes)+R-S);
+
+                        displayReservedice(parseInt(values.ActionRes)+R-S);
+                        displayRolldice(0);
+                        displayActiondice(parseInt(values.Action)+S);
+                        setAttrs({ ActionRes:parseInt(values.ActionRes)+R-S});
+                        setAttrs({ ActionPool:0});
+                        setAttrs({ Action:parseInt(values.Action)+S});
+                        // Handle the roll results
+                        finishRoll(results.rollId);
+                    });
+                });
+            });
+
+            // Add event listener to your button
+            const checklist = ["weapon1","weapon2","weapon3","weapon4"];
+            checklist.forEach(check => {
+                on(`changed:${check}`, function() {
+                    console.log("weapon select test");
+                    // Reset Ammo Pool and Ammo Reserve
+                    getAttrs([  "weapon1",
+                                "weapon2",
+                                "weapon3",
+                                "weapon4",
+                                "weapon1ammo",
+                                "weapon2ammo",
+                                "weapon3ammo",
+                                "weapon4ammo",
+                                "weapon1cap",
+                                "weapon2cap",
+                                "weapon3cap",
+                                "weapon4cap",
+                                "Ammo",
+                                "AmmoPool",
+                                "AmmoRes"], (v) => {
+                        setAttrs({Ammo: 0});
+                        let ammosum = 0;
+                        let ressum = 0;
+                        if(v.weapon1=="on") {
+                            // weapon1 box is checked. include weapon1 
+                            ammosum += parseInt(values.weapon1ammo)
+                            ressum += parseInt(values.weapon1cap) - parseInt(values.weapon1ammo)
+                        }
+                        if(v.weapon2=="on") {
+                            // weapon2 box is checked. include weapon1 
+                            ammosum += parseInt(values.weapon2ammo)
+                            ressum += parseInt(values.weapon2cap) - parseInt(values.weapon2ammo)
+                        }
+                        if(v.weapon3=="on") {
+                            // weapon3 box is checked. include weapon1 
+                            ammosum += parseInt(values.weapon3ammo)
+                            ressum += parseInt(values.weapon3cap) - parseInt(values.weapon3ammo)
+                        }
+                        if(v.weapon4=="on") {
+                            // weapon1 box is checked. include weapon1 
+                            ammosum += parseInt(values.weapon4ammo)
+                            ressum += parseInt(values.weapon4cap) - parseInt(values.weapon4ammo)
+                        }
+                        setAttrs({Ammo: ammosum});
+                        setAttrs({AmmoRes: ressum});
+                    });
+                });
+            });
+   
+            /* Sheet worker to clear the Action Roll pool and return all dice to the Action pool */
+            on("clicked:actionpoolclear", function(eventInfo) {
+                console.log("actionpoolclear click");
+                getAttrs([  "Action",
+                            "ActionPool",
+                            "roll0"], function(values) {
+                    console.log("Calling displayActiondice",parseInt(values.Action) + parseInt(values.ActionPool));
+                    displayActiondice(parseInt(values.Action) + parseInt(values.ActionPool));
+                    setAttrs({ ActionPool:0});
+                    setAttrs({  roll0:1,
+                                roll1:0,
+                                roll2:0,
+                                roll3:0,
+                                roll4:0,
+                                roll5:0,
+                                roll6:0,
+                                roll7:0,
+                                roll8:0,
+                                roll9:0,
+                                roll10:0,
+                                roll11:0,
+                                roll12:0});
+                });
+            });
+            
+            /* Sheet worker to add a die from the Action pool to the Action Roll pool */
+            on("clicked:actionpooladd", function(eventInfo) {
+                console.log("actionpooladd click");
+                getAttrs([  "Action",
+                            "ActionPool"], function(values) {
+                    if(parseInt(values.Action)>0) {
+                        displayActiondice(parseInt(values.Action)-1);
+                        displayRolldice(parseInt(values.ActionPool)+1);
+                        setAttrs({ Action:parseInt(values.Action)-1});
+                        setAttrs({ ActionPool:parseInt(values.ActionPool)+1});
+                    }
+                });
+            });
+            
+            /* Sheet worker to remove a die from the Action Roll pool back to the Action pool */
+            on("clicked:actionpoolremove", function(eventInfo) {
+                console.log("actionpoolremove click");
+                getAttrs([  "Action",
+                            "ActionPool"], function(values) {
+                    if(parseInt(values.ActionPool)>0) {
+                        displayActiondice(parseInt(values.Action)+1);
+                        displayRolldice(parseInt(values.ActionPool)-1);
+                        setAttrs({ Action:parseInt(values.Action)+1});
+                        setAttrs({ ActionPool:parseInt(values.ActionPool)-1});
+                    }
+                });
+            });
+
+            const buttonlist = ["pc","threats","help","stats","ops"];
             buttonlist.forEach(button => {
                 on(`clicked:${button}`, function() {
                     setAttrs({
@@ -539,7 +1372,7 @@
                                     "Ammo1Res",
                                     "Ammo2Res",
                                     "Ammo3Res"], function(values) {
-                            setAttrs({ Action: parseInt(values.ActionPool) + parseInt(values.Action)});
+                            setAttrs({ Action: parseInt(values.ActionPool) + parseInt(values.Action)}, {silent: false});
                             setAttrs({ Ammo1: parseInt(values.Ammo1Pool) + parseInt(values.Ammo1)});
                             setAttrs({ Ammo2: parseInt(values.Ammo2Pool) + parseInt(values.Ammo2)});
                             setAttrs({ Ammo3: parseInt(values.Ammo3Pool) + parseInt(values.Ammo3)});
@@ -591,7 +1424,7 @@
                                 finalp = currentp;
                                 finala = currentt-currentp-currentr;
                             }
-                            setAttrs({ Action: finala});
+                            setAttrs({ Action: finala}, {silent: false});
                             setAttrs({ ActionPool: finalp});
                         });
                     }
@@ -682,7 +1515,7 @@
                 });
             });
 
-            // Replenish; Move Dice from Reserve
+            // Replenish; Move used Action dice from Reserve
             on('clicked:Replenish',  function() {
                 console.log("Replenish");
                 getAttrs(["dmgr"], (v) => {
@@ -693,6 +1526,9 @@
                             setAttrs({ Action: parseInt(values.ActionTot)});
                             setAttrs({ ActionRes: 0});
                             setAttrs({ ActionPool: 0});
+                            displayReservedice(0);
+                            displayRolldice(0);
+                            displayActiondice(parseInt(values.ActionTot));
                         });
                     }
                 });
@@ -799,17 +1635,10 @@
                 });
             });
 
-            // Reset all hits on threats tab
-            on('clicked:ResetHits',  function() {
-                console.log("ResetHits");
-                getAttrs(["thp","thp_1","thp_2","thp_3","thp_4","thp_5","thp_6"], function(values) {
-                    setAttrs({ thp_1: parseInt(values.thp)});
-                    setAttrs({ thp_2: parseInt(values.thp)});
-                    setAttrs({ thp_3: parseInt(values.thp)});
-                    setAttrs({ thp_4: parseInt(values.thp)});
-                    setAttrs({ thp_5: parseInt(values.thp)});
-                    setAttrs({ thp_6: parseInt(values.thp)});
-                });
+            // Attach Threat 1 to selected token
+            on('clicked:tlink1',  function() {
+                console.log("tlink1 test");
+                console.log("@{selected.bar1_link}");
             });
                  
         </script> 
