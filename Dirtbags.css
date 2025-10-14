@@ -105,8 +105,7 @@ input.sheet-toggle-hide:checked ~ div.sheet-body {
 .sheet-pc,
 .sheet-threats, 
 .sheet-help,
-.sheet-stats,
-.sheet-ops {
+.sheet-equip {
 	display: none;
 }
 
@@ -114,9 +113,61 @@ input.sheet-toggle-hide:checked ~ div.sheet-body {
 .sheet-tabstoggle[value="pc"] ~ div.sheet-pc,
 .sheet-tabstoggle[value="threats"] ~ div.sheet-threats,
 .sheet-tabstoggle[value="help"] ~ div.sheet-help,
-.sheet-tabstoggle[value="stats"] ~ div.sheet-stats,
-.sheet-tabstoggle[value="ops"] ~ div.sheet-ops {
+.sheet-tabstoggle[value="equip"] ~ div.sheet-equip {
 	display: block;
+}
+
+/* Weapon Jam buttons */
+/* Hide checkbox visually but keep it functional */
+.weapon1on {
+    display: none;
+}
+/* Hide button by default */
+.status-weapon1on {
+    display: none;
+}
+/* Show button when checkbox is checked - using adjacent sibling selector */
+.weapon1on:checked + .status-weapon1on {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.weapon2on {
+    display: none;
+}
+/* Hide button by default */
+.status-weapon2on {
+    display: none;
+}
+/* Show button when checkbox is checked - using adjacent sibling selector */
+.weapon2on:checked + .status-weapon2on {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.weapon3on {
+    display: none;
+}
+/* Hide button by default */
+.status-weapon3on {
+    display: none;
+}
+/* Show button when checkbox is checked - using adjacent sibling selector */
+.weapon3on:checked + .status-weapon3on {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.weapon4on {
+    display: none;
+}
+/* Hide button by default */
+.status-weapon4on {
+    display: none;
+}
+/* Show button when checkbox is checked - using adjacent sibling selector */
+.weapon4on:checked + .status-weapon4on {
+    display: block;
 }
 
 /* Action Dice area */
@@ -708,6 +759,202 @@ input.sheet-toggle-hide:checked ~ div.sheet-body {
     display: block;
 }
 
+/* Ammo Pool Dice area */
+/* Hide checkbox visually but keep it functional */
+.ammo0 {
+    display: none;
+}
+/* Hide image by default */
+.status-ammo0 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.ammo0:checked + .status-ammo0 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.ammo1 {
+    display: none;
+}
+/* Hide image by default */
+.status-ammo1 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.ammo1:checked + .status-ammo1 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.ammo2 {
+    display: none;
+}
+/* Hide image by default */
+.status-ammo2 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.ammo2:checked + .status-ammo2 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.ammo3 {
+    display: none;
+}
+/* Hide image by default */
+.status-ammo3 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.ammo3:checked + .status-ammo3 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.ammo4 {
+    display: none;
+}
+/* Hide image by default */
+.status-ammo4 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.ammo4:checked + .status-ammo4 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.ammo5 {
+    display: none;
+}
+/* Hide image by default */
+.status-ammo5 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.ammo5:checked + .status-ammo5 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.ammo6 {
+    display: none;
+}
+/* Hide image by default */
+.status-ammo6 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.ammo6:checked + .status-ammo6 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.ammo7 {
+    display: none;
+}
+/* Hide image by default */
+.status-ammo7 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.ammo7:checked + .status-ammo7 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.ammo8 {
+    display: none;
+}
+/* Hide image by default */
+.status-ammo8 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.ammo8:checked + .status-ammo8 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.ammo9 {
+    display: none;
+}
+/* Hide image by default */
+.status-ammo9 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.ammo9:checked + .status-ammo9 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.ammo10 {
+    display: none;
+}
+/* Hide image by default */
+.status-ammo10 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.ammo10:checked + .status-ammo10 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.ammo11 {
+    display: none;
+}
+/* Hide image by default */
+.status-ammo11 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.ammo11:checked + .status-ammo11 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.ammo12 {
+    display: none;
+}
+/* Hide image by default */
+.status-ammo12 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.ammo12:checked + .status-ammo12 {
+    display: block;
+}
+
 /* Reserve Pool Dice area */
 /* Hide checkbox visually but keep it functional */
 .reserve0 {
@@ -901,5 +1148,201 @@ input.sheet-toggle-hide:checked ~ div.sheet-body {
 }
 /* Show image when checkbox is checked - using adjacent sibling selector */
 .reserve12:checked + .status-reserve12 {
+    display: block;
+}
+
+/* Ammo Reserve Pool Dice area */
+/* Hide checkbox visually but keep it functional */
+.amres0 {
+    display: none;
+}
+/* Hide image by default */
+.status-amres0 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.amres0:checked + .status-amres0 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.amres1 {
+    display: none;
+}
+/* Hide image by default */
+.status-amres1 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.amres1:checked + .status-amres1 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.amres2 {
+    display: none;
+}
+/* Hide image by default */
+.status-amres2 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.amres2:checked + .status-amres2 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.amres3 {
+    display: none;
+}
+/* Hide image by default */
+.status-amres3 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.amres3:checked + .status-amres3 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.amres4 {
+    display: none;
+}
+/* Hide image by default */
+.status-amres4 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.amres4:checked + .status-amres4 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.amres5 {
+    display: none;
+}
+/* Hide image by default */
+.status-amres5 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.amres5:checked + .status-amres5 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.amres6 {
+    display: none;
+}
+/* Hide image by default */
+.status-amres6 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.amres6:checked + .status-amres6 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.amres7 {
+    display: none;
+}
+/* Hide image by default */
+.status-amres7 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.amres7:checked + .status-amres7 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.amres8 {
+    display: none;
+}
+/* Hide image by default */
+.status-amres8 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.amres8:checked + .status-amres8 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.amres9 {
+    display: none;
+}
+/* Hide image by default */
+.status-amres9 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.amres9:checked + .status-amres9 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.amres10 {
+    display: none;
+}
+/* Hide image by default */
+.status-amres10 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.amres10:checked + .status-amres10 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.amres11 {
+    display: none;
+}
+/* Hide image by default */
+.status-amres11 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.amres11:checked + .status-amres11 {
+    display: block;
+}
+
+/* Hide checkbox visually but keep it functional */
+.amres12 {
+    display: none;
+}
+/* Hide image by default */
+.status-amres12 {
+    width: 190px;
+    height: 150px;
+    display: none;
+}
+/* Show image when checkbox is checked - using adjacent sibling selector */
+.amres12:checked + .status-amres12 {
     display: block;
 }
