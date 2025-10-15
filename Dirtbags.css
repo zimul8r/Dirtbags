@@ -1346,3 +1346,4 @@ input.sheet-toggle-hide:checked ~ div.sheet-body {
 .amres12:checked + .status-amres12 {
     display: block;
 }
+
