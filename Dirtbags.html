@@ -31,21 +31,26 @@
                 <div style="grid-row: 1;grid-column: 1;display: grid;grid-auto-rows: 35px;font-family:'Courier';font-size: 125%;text-align:left;width:100%;position:relative;border: 1px solid black;background-color: aqua;">
                     <div style="display: inline">
                         <span for="player" style="font-family:'Courier';padding-left:5px;padding-right:5px"><b>PLAYER</b></span>
-                        <input class="role" type="text" name="attr_Player" id="alias" style="width: 65%"/>
+                        <input class="role" type="text" name="attr_Player" id="alias" style="width: 69%"/>
                     </div>
                     <div style="display: inline">
                         <span for="alias" style="font-family:'Courier';padding-left:5px;padding-right:5px"><b>ALIAS</b></span>
-                        <input class="role" type="text" name="attr_Alias" id="alias" style="width: 65%"/>
+                        <input class="role" type="text" name="attr_Alias" id="alias" style="width: 72%"/>
                     </div>
                     <div style="display: inline">
                         <span  for="RoleList" style="padding-left:5px;padding-right:5px"><b>ROLE</b></span>
-                        <input type="text" name="attr_Role" id="RoleList" list="roles" style="font-size: 1em;width: 60%;height: 1.1em;margin-bottom: 0px;font-family: 'Courier';background-color: rgb(225,225,225);padding: 0px;border: none;text-transform: uppercase;">
+                        <input type="text" name="attr_Role" id="RoleList" list="roles" style="font-size: 1em;width: 75%;height: 1.1em;margin-bottom: 0px;font-family: 'Courier';background-color: rgb(225,225,225);padding: 0px;border: none;text-transform: uppercase;">
                             <datalist id="roles">
-                              <option value="infanteer">
-                              <option value="combat medic">
-                              <option value="combat engineer">
-                              <option value="reconnaissance">
-                              <option value="support gunner">
+                              <option value="APE">
+                              <option value="PILL">
+                              <option value="TECH">
+                              <option value="HEN">
+                              <option value="MUSCLE HEAD">
+                              <option value="INFANTEER">
+                              <option value="COMBAT MEDIC">
+                              <option value="COMBAT ENGINEER">
+                              <option value="RECONNAISSANCE">
+                              <option value="SUPPORT GUNNER">
                             </datalist>
                         </input>
                     </div>
@@ -235,6 +240,18 @@
                         <input class="role" type="number" name="attr_Credits" id="Credits" style="float: right; width: 50%"/>
                     </div>
                     <!-- add Checkbox Weapon Cap Ammo table --> 
+                        
+                    <datalist id="Weaps">
+                        <option value="Service Pistol">
+                        <option value="Auto Pistol">
+                        <option value="'Raid’ SMG">
+                        <option value="‘Boot’ Shotgun">
+                        <option value="Assault Rifle">
+                        <option value="Scouting Rifle">
+                        <option value="Machine Gun">
+                        <option value="Flamethrower">
+                    </datalist>
+                    
                     <div style="display: grid;grid-template-columns: 20px 125px 40px 40px 20px 20px;">
                         <b style="grid-row: 1;grid-column: 2;text-align: center;align-self: end;">WEAPON</b>
                         <b style="grid-row: 1;grid-column: 3;align-self: end;">CAP</b>
@@ -243,7 +260,7 @@
                         <b style="grid-row: 1;grid-column: 6;writing-mode: sideways-lr;">MOD</b>
                         <!-- Weapon 1 -->
                         <input type="radio" name="attr_weapon" value="1" style="grid-row: 2;grid-column: 1;height: 1.5em;width: 1.5em; accent-color: red">
-                        <input style="grid-row: 2;grid-column: 2;width: auto;" type="text" name="attr_weapon1name"/>
+                        <input list="Weaps" style="grid-row: 2;grid-column: 2;width: auto;font-family: narrow" type="text" name="attr_weapon1name"/>
                         <input style="grid-row: 2;grid-column: 3;width: auto;" type="number" name="attr_weapon1cap"/>
                         <input style="grid-row: 2;grid-column: 4;width: auto;" type="number" name="attr_weapon1ammo"/>
                         <input style="grid-row: 2;grid-column: 5;width: auto;" type="text" name="attr_weapon1cal"/>
@@ -254,7 +271,7 @@
 
                         <!-- Weapon 2 -->
                         <input type="radio" name="attr_weapon" value="2" style="grid-row: 3;grid-column: 1;height: 1.5em;width: 1.5em; accent-color: red">
-                        <input style="grid-row: 3;grid-column: 2;width: auto;" type="text" name="attr_weapon2name"/>
+                        <input list="Weaps" style="grid-row: 3;grid-column: 2;width: auto;font-family: narrow" type="text" name="attr_weapon2name"/>
                         <input style="grid-row: 3;grid-column: 3;width: auto;" type="number" name="attr_weapon2cap"/>
                         <input style="grid-row: 3;grid-column: 4;width: auto;" type="number" name="attr_weapon2ammo"/>
                         <input style="grid-row: 3;grid-column: 5;width: auto;" type="text" name="attr_weapon2cal"/>
@@ -265,7 +282,7 @@
 
                         <!-- Weapon 3 -->
                         <input type="radio" name="attr_weapon" value="3" style="grid-row: 4;grid-column: 1;height: 1.5em;width: 1.5em; accent-color: red">
-                        <input style="grid-row: 4;grid-column: 2;width: auto;" type="text" name="attr_weapon3name"/>
+                        <input list="Weaps" style="grid-row: 4;grid-column: 2;width: auto;font-family: narrow" type="text" name="attr_weapon3name"/>
                         <input style="grid-row: 4;grid-column: 3;width: auto;" type="number" name="attr_weapon3cap"/>
                         <input style="grid-row: 4;grid-column: 4;width: auto;" type="number" name="attr_weapon3ammo"/>
                         <input style="grid-row: 4;grid-column: 5;width: auto;" type="text" name="attr_weapon3cal"/>
@@ -276,7 +293,7 @@
 
                         <!-- Weapon 4 -->
                         <input type="radio" name="attr_weapon" value="4" style="grid-row: 5;grid-column: 1;height: 1.5em;width: 1.5em; accent-color: red">
-                        <input style="grid-row: 5;grid-column: 2;width: auto;" type="text" name="attr_weapon4name"/>
+                        <input list="Weaps" style="grid-row: 5;grid-column: 2;width: auto;font-family: narrow" type="text" name="attr_weapon4name"/>
                         <input style="grid-row: 5;grid-column: 3;width: auto;" type="number" name="attr_weapon4cap"/>
                         <input style="grid-row: 5;grid-column: 4;width: auto;" type="number" name="attr_weapon4ammo"/>
                         <input style="grid-row: 5;grid-column: 5;width: auto;" type="text" name="attr_weapon4cal"/>
@@ -317,7 +334,7 @@
             </div>
 
             <div style="display: inline-flex">
-                <div style="display: grid;grid-auto-columns: 32.76%;column-gap: 3px;width: 457px;height: auto;border: 1px solid black;padding: 3px 0px 3px 3px;background-color: lawngreen;">
+                <div style="display: grid;grid-auto-columns: 32.76%;column-gap: 3px;width: 443px;height: auto;border: 1px solid black;padding: 3px 0px 3px 3px;background-color: lawngreen;">
                     <!-- Action die area -->
                     <div style="grid-row: 1;grid-column: 1;text-align: center">
                         <span>ACTION POOL</span>
@@ -350,7 +367,7 @@
         
                         <button style="background-color: green;color: black;font-size: 2em;border-radius: 10px" type="action" name="act_actionpooladd" >+</button>
                         <button style="background-color: red;color: black;font-size: 2em;border-radius: 10px" type="action" name="act_actionpoolremove" >−</button>
-                        <button style="background-color: white;color: black;font-size: 1.2em;border-radius: 10px" type="action" name="act_actionpoolclear" >RESET!</button>
+                        <button style="background-color: white;color: black;font-size: 1.2em;border-radius: 10px;vertical-align: text-bottom;" type="action" name="act_actionpoolclear" >RESET!</button>
                     </div>
                     <!-- Action Roll Pool area -->
                     <div style="grid-row: 1;grid-column: 2;text-align: center">
@@ -417,8 +434,10 @@
                         <button style="background-color: pink;color: black;font-size: 1.2em;display: block;margin: auto;border-radius: 10px" type="action" name="act_Replenish" >REPLENISH!</button>
                     </div>
                 </div>
-    
-                <div style="display: grid;grid-auto-columns: 32.76%;column-gap: 3px;width: 457px;height: auto;border: 1px solid black;color: white;padding: 3px 1px 3px 2px;background-color: mediumpurple;">
+                <div>
+                    <button style="background-color: blue;color: white;font-size: 1.2em;border-radius: 10px;height: 203px;width: 20px;writing-mode: vertical-lr;text-orientation: upright;" type="action" name="act_defense">DEFENSE</button>
+                </div>
+                <div style="display: grid;grid-auto-columns: 32.76%;column-gap: 3px;width: 443px;height: auto;border: 1px solid black;color: white;padding: 3px 1px 3px 2px;background-color: mediumpurple;">
                     <!-- Ammo die area -->
                     <div style="grid-row: 1;grid-column: 1;text-align: center">
                         <span>AMMO POOL</span>
@@ -451,7 +470,7 @@
         
                         <button style="background-color: green;color: black;font-size: 2em;border-radius: 10px" type="action" name="act_ammopooladd" >+</button>
                         <button style="background-color: red;color: black;font-size: 2em;border-radius: 10px" type="action" name="act_ammopoolremove" >−</button>
-                        <button style="background-color: white;color: black;font-size: 1.2em;border-radius: 10px" type="action" name="act_ammopoolclear" >RESET!</button>
+                        <button style="background-color: white;color: black;font-size: 1.2em;border-radius: 10px;vertical-align: text-bottom;" type="action" name="act_ammopoolclear" >RESET!</button>
                     </div >
                     <!-- Ammo Roll Pool area -->
                     <div style="grid-row: 1;grid-column: 2;text-align: center">
@@ -534,7 +553,7 @@
                 <option value="---FIREARMS---">
                 <option value="350-SI Service Pistol (CAL Light, CAP 4d6, MOD Semi, ER Close, HM 1, PRICE 25CR)">
                 <option value="X99 ‘Reaper’ Auto Pistol  (CAL Light, CAP 4d6, MOD Auto, ER Close, HM 1, PRICE 35CR)">
-                <option value="SM-2 “Raid’ Submachine Gun  (CAL Light, CAP 5d6, MOD Auto, ER Close, HM 1, PRICE 40CR)">
+                <option value="SM-2 'Raid’ Submachine Gun  (CAL Light, CAP 5d6, MOD Auto, ER Close, HM 1, PRICE 40CR)">
                 <option value="S-80 ‘Boot’ Shotgun (CAL Medium, CAP 4d6, MOD Semi, ER Close, HM 2, PRICE 50CR)">
                 <option value="AR-1 'Anteater’ Assault Rifle (CAL Medium, CAP 6d6, MOD Auto, ER Near, HM 1, PRICE 50CR)">
                 <option value="Armtech ‘Arctic Wolf’ Scouting Rifle (CAL Medium, CAP 6d6, MOD Single, ER Far, HM 2, PRICE 55CR)">
@@ -1357,10 +1376,121 @@
             });
 
             // Add event listener to your button
+            on('clicked:defense', function(eventInfo) {
+                console.log("defense-button test");
+                // Define your roll formula
+                let rollFormula = "&{template:default} {{name=Action}} {{Rolling=[[@{ActionPool}+@{AmmoPool}]] dice}} {{Difficulty=[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}]]}} {{Successes=[[{[[@{ActionPool}+@{AmmoPool}]]d6cs>6cf<[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}-1]]}>[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}]]]]}}";
+                
+                getAttrs([  "ActionPool",
+                            "ActionRes",
+                            "Action",
+                            "AmmoPool",
+                            "AmmoRes",
+                            "Ammo",
+                            "weapon",
+                            "weapon1ammo",
+                            "weapon2ammo",
+                            "weapon3ammo",
+                            "weapon4ammo",
+                            "weapon1cap",
+                            "weapon2cap",
+                            "weapon3cap",
+                            "weapon4cap",
+                            "weapon1on",
+                            "weapon2on",
+                            "weapon3on",
+                            "weapon4on"], function(values) {
+                    // Start the roll
+                    startRoll(rollFormula, function(results) {
+                        console.log("roll results");
+                        let R = values[`ActionPool`];
+                        let S = Math.min(results.results.Successes.result,values[`ActionPool`]);
+                        console.log("Action Rolled ",R,"Total Successes",results.results.Successes.result,"Action Successes ",S);
+
+                        // Reset Roll Pool and Reserve
+                        console.log(parseInt(values.ActionRes)+R-S);
+
+                        // Check for crit = double 6's 
+                        let k = 0;
+                        let J = 0;
+                        for(let i=0;i<results.results.Successes.dice.length;i++){
+                            console.log("Iteration number:", i);
+                            if(results.results.Successes.dice[i]==6) {
+                                k++;  
+                            }
+                        }
+                        if(k>1) {
+                            J=1
+                        }
+                        displayReservedice(Math.max(parseInt(values.ActionRes)+R-S-J,0));
+                        displayRolldice(0);
+                        displayActiondice(Math.min(parseInt(values.Action)+S+J,parseInt(values.Action)+R));
+                        setAttrs({ ActionRes:Math.max(parseInt(values.ActionRes)+R-S-J,0)});
+                        setAttrs({ ActionPool:0});
+                        setAttrs({ Action:Math.min(parseInt(values.Action)+S+J,parseInt(values.Action)+R)});
+
+                        let R2 = values[`AmmoPool`];
+                        console.log("Ammo Rolled ",R2);
+
+                        // Reset AMMO Pool and Reserve
+                        displayAmresdice(parseInt(values.AmmoRes)+R2);
+                        displayFiredice(0);
+                        displayAmmodice(parseInt(values.Ammo));
+                        setAttrs({ AmmoRes:parseInt(values.AmmoRes)+R2});
+                        setAttrs({ AmmoPool:0});
+                        setAttrs({ Ammo:parseInt(values.Ammo)});
+
+                        // Check for jam = double 1's 
+                        let n = 0;
+                        for(let i=0;i<results.results.Successes.dice.length;i++){
+                            console.log("Iteration number:", i);
+                            if(results.results.Successes.dice[i]==1) {
+                                n++;  
+                            }
+                        }
+                        // Decrement ammo of selected weapon
+                        switch(values.weapon){
+                            case "1":
+                                // weapon1 box is checked.  
+                                setAttrs({ weapon1ammo:parseInt(values.weapon1ammo)-R2});
+                                if(n>1) {
+                                    setAttrs({ weapon1on:1});
+                                }
+                                break;
+                            case "2":
+                                // weapon2 box is checked.  
+                                setAttrs({ weapon2ammo:parseInt(values.weapon2ammo)-R2});
+                                if(n>1) {
+                                    setAttrs({ weapon2on:1});
+                                }
+                                break;
+                            case "3":
+                                // weapon3 box is checked.  
+                                setAttrs({ weapon3ammo:parseInt(values.weapon3ammo)-R2});
+                                if(n>1) {
+                                    setAttrs({ weapon3on:1});
+                                }
+                                break;
+                            case "4":
+                                // weapon4 box is checked.  
+                                setAttrs({ weapon4ammo:parseInt(values.weapon4ammo)-R2});
+                                if(n>1) {
+                                    setAttrs({ weapon4on:1});
+                                }
+                                break;
+                        }
+                        
+                        // Handle the roll results
+                        finishRoll(results.rollId);
+                    });
+                });
+            });
+
+            // Add event listener to your button
             on('clicked:attack-button', function(eventInfo) {
                 console.log("attack-button test");
                 // Define your roll formula
-                let rollFormula = "&{template:default} {{name=Action}} {{Rolling=[[@{ActionPool}]] dice}} {{Difficulty=[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}]]}} {{Successes=[[{[[@{ActionPool}]]d6cs>6cf<[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}-1]]}>[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}]]]]}}";
+                let rollFormula = "&{template:default} {{name=Defense}} {{Rolling=[[@{ActionPool}]] dice}} {{Difficulty=[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}]]}} {{Successes=[[{[[@{ActionPool}]]d6cs>6cf<[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}-1]]}>[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}]]]]}}";
                 
                 getAttrs([  "ActionPool",
                             "ActionRes",
@@ -1431,7 +1561,7 @@
                         let R = results.results.Rolling.result;
                         let S = results.results.Successes.result;
 
-                        // Reset Roll Pool and Reserve
+                        // Reset AMMO Pool and Reserve
                         displayAmresdice(parseInt(values.AmmoRes)+R);
                         displayFiredice(0);
                         displayAmmodice(parseInt(values.Ammo));
@@ -1531,6 +1661,286 @@
                     displayAmmodice(ammosum);
                     displayAmresdice(ressum);
                     displayFiredice(0);
+                });
+            });
+
+            // Add event listener to your button
+            on(`change:weapon1name`, function(eventInfo) {
+                // Update weapons table
+                const selectedValue = eventInfo.newValue; 
+                console.log("weapon1 select test:",selectedValue);
+                getAttrs([  "weapon1cap",
+                            "weapon1ammo",
+                            "weapon1cal",
+                            "weapon1mod"], (v) => {
+                    switch(selectedValue){
+                        case "Service Pistol":
+                            console.log("Service Pistol")
+                            setAttrs({weapon1cap:4});
+                            setAttrs({weapon1ammo:4});
+                            setAttrs({weapon1cal:"L"});
+                            setAttrs({weapon1mod:"S"});
+                            break;
+                        case "Auto Pistol":
+                            console.log("Auto Pistol")
+                            setAttrs({weapon1cap:4});
+                            setAttrs({weapon1ammo:4});
+                            setAttrs({weapon1cal:"L"});
+                            setAttrs({weapon1mod:"A"});
+                            break;
+                        case "'Raid’ SMG":
+                            console.log("'Raid’ SMG")
+                            setAttrs({weapon1cap:5});
+                            setAttrs({weapon1ammo:5});
+                            setAttrs({weapon1cal:"L"});
+                            setAttrs({weapon1mod:"A"});
+                            break;
+                        case "‘Boot’ Shotgun":
+                            console.log("‘Boot’ Shotgun")
+                            setAttrs({weapon1cap:4});
+                            setAttrs({weapon1ammo:4});
+                            setAttrs({weapon1cal:"L"});
+                            setAttrs({weapon1mod:"S"});
+                            break;
+                        case "Assault Rifle":
+                            console.log("Assault Rifle")
+                            setAttrs({weapon1cap:6});
+                            setAttrs({weapon1ammo:6});
+                            setAttrs({weapon1cal:"M"});
+                            setAttrs({weapon1mod:"A"});
+                            break;
+                        case "Scouting Rifle":
+                            console.log("Scouting Rifle")
+                            setAttrs({weapon1cap:6});
+                            setAttrs({weapon1ammo:6});
+                            setAttrs({weapon1cal:"M"});
+                            setAttrs({weapon1mod:"1"});
+                            break;
+                        case "Machine Gun":
+                            console.log("Machine Gun")
+                            setAttrs({weapon1cap:10});
+                            setAttrs({weapon1ammo:10});
+                            setAttrs({weapon1cal:"H"});
+                            setAttrs({weapon1mod:"A"});
+                            break;
+                        case "Flamethrower":
+                            console.log("Flamethrower")
+                            setAttrs({weapon1cap:6});
+                            setAttrs({weapon1ammo:6});
+                            setAttrs({weapon1cal:"H"});
+                            setAttrs({weapon1mod:"S"});
+                            break;
+                    }
+                });
+            });
+
+            // Add event listener to your button
+            on(`change:weapon2name`, function(eventInfo) {
+                // Update weapons table
+                const selectedValue = eventInfo.newValue; 
+                console.log("weapon2 select test:",selectedValue);
+                getAttrs([  "weapon2cap",
+                            "weapon2ammo",
+                            "weapon2cal",
+                            "weapon2mod"], (v) => {
+                    switch(selectedValue){
+                        case "Service Pistol":
+                            console.log("Service Pistol")
+                            setAttrs({weapon2cap:4});
+                            setAttrs({weapon2ammo:4});
+                            setAttrs({weapon2cal:"L"});
+                            setAttrs({weapon2mod:"S"});
+                            break;
+                        case "Auto Pistol":
+                            console.log("Auto Pistol")
+                            setAttrs({weapon2cap:4});
+                            setAttrs({weapon2ammo:4});
+                            setAttrs({weapon2cal:"L"});
+                            setAttrs({weapon2mod:"A"});
+                            break;
+                        case "'Raid’ SMG":
+                            console.log("'Raid’ SMG")
+                            setAttrs({weapon2cap:5});
+                            setAttrs({weapon2ammo:5});
+                            setAttrs({weapon2cal:"L"});
+                            setAttrs({weapon2mod:"A"});
+                            break;
+                        case "‘Boot’ Shotgun":
+                            console.log("‘Boot’ Shotgun")
+                            setAttrs({weapon2cap:4});
+                            setAttrs({weapon2ammo:4});
+                            setAttrs({weapon2cal:"L"});
+                            setAttrs({weapon2mod:"S"});
+                            break;
+                        case "Assault Rifle":
+                            console.log("Assault Rifle")
+                            setAttrs({weapon2cap:6});
+                            setAttrs({weapon2ammo:6});
+                            setAttrs({weapon2cal:"M"});
+                            setAttrs({weapon2mod:"A"});
+                            break;
+                        case "Scouting Rifle":
+                            console.log("Scouting Rifle")
+                            setAttrs({weapon2cap:6});
+                            setAttrs({weapon2ammo:6});
+                            setAttrs({weapon2cal:"M"});
+                            setAttrs({weapon2mod:"1"});
+                            break;
+                        case "Machine Gun":
+                            console.log("Machine Gun")
+                            setAttrs({weapon2cap:10});
+                            setAttrs({weapon2ammo:10});
+                            setAttrs({weapon2cal:"H"});
+                            setAttrs({weapon2mod:"A"});
+                            break;
+                        case "Flamethrower":
+                            console.log("Flamethrower")
+                            setAttrs({weapon2cap:6});
+                            setAttrs({weapon2ammo:6});
+                            setAttrs({weapon2cal:"H"});
+                            setAttrs({weapon2mod:"S"});
+                            break;
+                    }
+                });
+            });
+
+            // Add event listener to your button
+            on(`change:weapon3name`, function(eventInfo) {
+                // Update weapons table
+                const selectedValue = eventInfo.newValue; 
+                console.log("weapon3 select test:",selectedValue);
+                getAttrs([  "weapon3cap",
+                            "weapon3ammo",
+                            "weapon3cal",
+                            "weapon3mod"], (v) => {
+                    switch(selectedValue){
+                        case "Service Pistol":
+                            console.log("Service Pistol")
+                            setAttrs({weapon3cap:4});
+                            setAttrs({weapon3ammo:4});
+                            setAttrs({weapon3cal:"L"});
+                            setAttrs({weapon3mod:"S"});
+                            break;
+                        case "Auto Pistol":
+                            console.log("Auto Pistol")
+                            setAttrs({weapon3cap:4});
+                            setAttrs({weapon3ammo:4});
+                            setAttrs({weapon3cal:"L"});
+                            setAttrs({weapon3mod:"A"});
+                            break;
+                        case "'Raid’ SMG":
+                            console.log("'Raid’ SMG")
+                            setAttrs({weapon3cap:5});
+                            setAttrs({weapon3ammo:5});
+                            setAttrs({weapon3cal:"L"});
+                            setAttrs({weapon3mod:"A"});
+                            break;
+                        case "‘Boot’ Shotgun":
+                            console.log("‘Boot’ Shotgun")
+                            setAttrs({weapon3cap:4});
+                            setAttrs({weapon3ammo:4});
+                            setAttrs({weapon3cal:"L"});
+                            setAttrs({weapon3mod:"S"});
+                            break;
+                        case "Assault Rifle":
+                            console.log("Assault Rifle")
+                            setAttrs({weapon3cap:6});
+                            setAttrs({weapon3ammo:6});
+                            setAttrs({weapon3cal:"M"});
+                            setAttrs({weapon3mod:"A"});
+                            break;
+                        case "Scouting Rifle":
+                            console.log("Scouting Rifle")
+                            setAttrs({weapon3cap:6});
+                            setAttrs({weapon3ammo:6});
+                            setAttrs({weapon3cal:"M"});
+                            setAttrs({weapon3mod:"1"});
+                            break;
+                        case "Machine Gun":
+                            console.log("Machine Gun")
+                            setAttrs({weapon3cap:10});
+                            setAttrs({weapon3ammo:10});
+                            setAttrs({weapon3cal:"H"});
+                            setAttrs({weapon3mod:"A"});
+                            break;
+                        case "Flamethrower":
+                            console.log("Flamethrower")
+                            setAttrs({weapon3cap:6});
+                            setAttrs({weapon3ammo:6});
+                            setAttrs({weapon3cal:"H"});
+                            setAttrs({weapon3mod:"S"});
+                            break;
+                    }
+                });
+            });
+
+            // Add event listener to your button
+            on(`change:weapon4name`, function(eventInfo) {
+                // Update weapons table
+                const selectedValue = eventInfo.newValue; 
+                console.log("weapon4 select test:",selectedValue);
+                getAttrs([  "weapon4cap",
+                            "weapon4ammo",
+                            "weapon4cal",
+                            "weapon4mod"], (v) => {
+                    switch(selectedValue){
+                        case "Service Pistol":
+                            console.log("Service Pistol")
+                            setAttrs({weapon4cap:4});
+                            setAttrs({weapon4ammo:4});
+                            setAttrs({weapon4cal:"L"});
+                            setAttrs({weapon4mod:"S"});
+                            break;
+                        case "Auto Pistol":
+                            console.log("Auto Pistol")
+                            setAttrs({weapon4cap:4});
+                            setAttrs({weapon4ammo:4});
+                            setAttrs({weapon4cal:"L"});
+                            setAttrs({weapon4mod:"A"});
+                            break;
+                        case "'Raid’ SMG":
+                            console.log("'Raid’ SMG")
+                            setAttrs({weapon4cap:5});
+                            setAttrs({weapon4ammo:5});
+                            setAttrs({weapon4cal:"L"});
+                            setAttrs({weapon4mod:"A"});
+                            break;
+                        case "‘Boot’ Shotgun":
+                            console.log("‘Boot’ Shotgun")
+                            setAttrs({weapon4cap:4});
+                            setAttrs({weapon4ammo:4});
+                            setAttrs({weapon4cal:"L"});
+                            setAttrs({weapon4mod:"S"});
+                            break;
+                        case "Assault Rifle":
+                            console.log("Assault Rifle")
+                            setAttrs({weapon4cap:6});
+                            setAttrs({weapon4ammo:6});
+                            setAttrs({weapon4cal:"M"});
+                            setAttrs({weapon4mod:"A"});
+                            break;
+                        case "Scouting Rifle":
+                            console.log("Scouting Rifle")
+                            setAttrs({weapon4cap:6});
+                            setAttrs({weapon4ammo:6});
+                            setAttrs({weapon4cal:"M"});
+                            setAttrs({weapon4mod:"1"});
+                            break;
+                        case "Machine Gun":
+                            console.log("Machine Gun")
+                            setAttrs({weapon4cap:10});
+                            setAttrs({weapon4ammo:10});
+                            setAttrs({weapon4cal:"H"});
+                            setAttrs({weapon4mod:"A"});
+                            break;
+                        case "Flamethrower":
+                            console.log("Flamethrower")
+                            setAttrs({weapon4cap:6});
+                            setAttrs({weapon4ammo:6});
+                            setAttrs({weapon4cal:"H"});
+                            setAttrs({weapon4mod:"S"});
+                            break;
+                    }
                 });
             });
    
@@ -1735,3 +2145,4 @@
 </html>
 <!-- Sheet close --> 
 <!--End of Sheet -->
+
