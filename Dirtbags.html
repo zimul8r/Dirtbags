@@ -753,7 +753,11 @@
 
             <h2>Sheet Tabs</h2>
 
-            <p>At the top of the page are three buttons: PC, EQUIPMENT, THREATS, and HELP.</p>
+            <p>At the top of the page are six buttons: PC, EQUIPMENT, THREATS, HELP, d26, and HIT LOCATION.</p>
+
+            <p>The d26 button rolls a Dirtbags! standard d26 (reading the first die as a d2 and the second as a d6) and publishes the 2.6-style result to the chat.</p>
+
+            <p>The HIT LOCATION button rolls the probabilities for a standard body location roll for hits and publishes the resulting body part to the chat.</p>
 
             <p>The PC button brings you to the main player character sheet. The EQUIPMENT button brings you to the gear and weapons sheet. The THREATS button brings you to the monsters sheet. The HELP button brings you to these directions.</p>
 
@@ -763,10 +767,9 @@
             
             <p>The left-most panel contains a number of fields for recording character details.</p>
             
-            <p>The ROLE field is a special drop-down menu. If the field is empty, the drop down lists the standard Dirtbags! roles and the player can select a role.
-            Otherwise, the player can type a custom role name into the field.</p>
+            <p>The ROLE field is a special drop-down menu. If the field is empty, the drop down lists the standard Dirtbags! roles and the player can select a role. The player can also type a custom role name into the field.</p>
             
-            <p>Once a player types anyting into the ROLE field, they have to clear the field to see the drop-down options again.</p>
+            <p>Once a player types anything into the ROLE field, they have to clear the field to see the drop-down options again.</p>
 
             <p>The TRAITS, P.O. (pardonable offences), and FALLOUT fields have vertical sliders in the event the player has more than 3 lines of entries to record.</p>
 
@@ -774,15 +777,22 @@
             
             <p>The middle panel contains the body health and injuries details.</p>
 
-            <p>Each body section has a pair of number fields for current hits remaining / total hits. There is also a status checkbox for each type of injury that body part may suffer from.</p>
+            <p>Each body section has a pair of number fields for current hits remaining / total hits. There is an armor field to record any armor that currently applies to that body part.</p>
+
+            <p>There is also a status checkbox for each type of injury that body part may suffer from.</p>
 
             <h3>Stats and Weapons Panel</h3>
             
             <p>The right-most panel contains current value and total value pairs for tracking the character statistics (BONES, CUNNING, and NERVES) and M.I.L.K. uses, and the current load carried and maximum carrying capacity.
             It also provides fields to record the number of kills and total credits the character has.</p>
 
-            <p>At the bottom of this panel, the player can enter up to 4 of their currently carried weapons, along with those weapons statistics for ammo CAPACITY, 
-            current AMMO level, CALIBER (L, M or H), and MODE (1=Single-action, S=semi-automatic, and A=automatic). The radio button to the left of each weapon designates the one currently in use. These fields work with the AMMO dice pools to manage the available dice.</p>
+            <p>At the bottom of this panel, the player can enter up to 4 of their currently carried weapons, along with those weapons statistics for ammo CAPACITY, current AMMO level, CALIBER (L, M or H), and MODE (1=Single-action, S=semi-automatic, and A=automatic). </p>
+
+            <p>The WEAPON field of each row in the table is a drop down menu of the standard weapons from the Dirtbags! Quick Start Guide. Selecting a weapon from the drop down automatically populates all the fields for that row of the table. 
+
+            <p>The player can also type in their own weapon name and weapon stats. Once a player types anything into the WEAPON field, they have to clear the field to see the drop-down options again. </p>
+
+            <p>The radio button to the left of each weapon designates the one currently in use. These fields work with the AMMO dice pools to manage the available dice.</p>
 
             <p>When a weapon is selected, the AMMO POOL and AMMO RESERVE boxes are set to the selected weapon's current values, and the AMMO box is emptied.</p>
             
@@ -829,7 +839,15 @@
             <h4>NOTE: The JAMMED button doesn't actually disable the weapon in the character sheet. It is only there to remind the player that they must clear the jam before using that weapon again.</h4>
             
             <p>The RELOAD button under the AMMO RESERVE returns all of the AMMO RESERVE dice to the AMMO POOL for that weapon, and updates the AMMO field of the selected weapon in the weapon table.</p>
-            
+            <p>Between the Action Pools and the Ammo Pools there is a DEFENSE button. When pressed this will roll all dice selected in both the ACTION and AMMO Pools in a single roll for DEFENSE.</p>            
+
+            <h2>The Equipment Sheet</h2>
+
+            <p>The Equipment Sheet has Add and Modify buttons to allow players to add item slots, rearrange the order, and remove item slots from the list.</p>
+
+            <p>There is a counter to the left of each item slot for recording how many of each item the character is carrying.</p>
+
+            <p>An empty item slot has a pull down menu with all of the items available in the Dirtbags! Quick Start Guide. The player can also type in any item they want. Once a player types anything into the item slot, they have to clear the field to see the drop-down options again. </p>
         </div>
 
         <script type="text/worker">
@@ -2053,15 +2071,8 @@
                     setAttrs({ ActionTot: parseInt(values.Bones) + parseInt(values.Cunning) + parseInt(values.Nerves) });
                 });
                 resetAction();
-/*                getAttrs([  "Action",
-                            "ActionPool",
-                            "ActionRes"], function(values) {
-                    setAttrs({ Action: parseInt(values.ActionPool) + parseInt(values.Action)}, {silent: false});
-                    setAttrs({ ActionPool: 0});
-                    setAttrs({ ActionPool: parseInt(values.ActionPool),'ActionPool_max': parseInt(values.Action)});
-                });
-*/          });    
-
+            });
+            
             // Changed Stat: Recompute Action Total Dice
             on('change:Bones change:Cunning change:Nerves',  function() {
                 console.log("Changed Stat");
