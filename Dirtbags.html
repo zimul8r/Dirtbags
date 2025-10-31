@@ -1397,7 +1397,7 @@
             on('clicked:defense', function(eventInfo) {
                 console.log("defense-button test");
                 // Define your roll formula
-                let rollFormula = "&{template:default} {{name=Action}} {{Rolling=[[@{ActionPool}+@{AmmoPool}]] dice}} {{Difficulty=[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}]]}} {{Successes=[[{[[@{ActionPool}+@{AmmoPool}]]d6cs>6cf<[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}-1]]}>[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}]]]]}}";
+                let rollFormula = "&{template:default} {{name=Defense}} {{Rolling=[[@{ActionPool}+@{AmmoPool}]] dice}} {{Difficulty=[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}]]}} {{Successes=[[{[[@{ActionPool}+@{AmmoPool}]]d6cs>6cf<[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}-1]]}>[[?{Difficulty|Default, 4|Advantage, 3|Disadvantage, 5|Severe Disadvantage, 6}]]]]}}";
                 
                 getAttrs([  "ActionPool",
                             "ActionRes",
@@ -1422,7 +1422,8 @@
                     startRoll(rollFormula, function(results) {
                         console.log("roll results");
                         let R = values[`ActionPool`];
-                        let S = Math.min(results.results.Successes.result,values[`ActionPool`]);
+                        // Need S to count only Action successes
+                        let S = results.results.Successes.dice.slice(0,R).filter(number => number >= parseInt(results.results.Difficulty.expression)).length;
                         console.log("Action Rolled ",R,"Total Successes",results.results.Successes.result,"Action Successes ",S);
 
                         // Reset Roll Pool and Reserve
@@ -1431,7 +1432,7 @@
                         // Check for crit = double 6's 
                         let k = 0;
                         let J = 0;
-                        for(let i=0;i<results.results.Successes.dice.length;i++){
+                        for(let i=0;i<R;i++){
                             console.log("Iteration number:", i);
                             if(results.results.Successes.dice[i]==6) {
                                 k++;  
@@ -1460,7 +1461,7 @@
 
                         // Check for jam = double 1's 
                         let n = 0;
-                        for(let i=0;i<results.results.Successes.dice.length;i++){
+                        for(let i=R;i<results.results.Successes.dice.length;i++){
                             console.log("Iteration number:", i);
                             if(results.results.Successes.dice[i]==1) {
                                 n++;  
@@ -2156,4 +2157,5 @@
 </html>
 <!-- Sheet close --> 
 <!--End of Sheet -->
+
 
